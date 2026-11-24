@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Lattiakaivon puhdistus, mobiilisivu</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="vieser.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap">
+<style>
+body{margin:0;background:#f6f5ed}
+</style>
+</helmet>
+<div style="width: 390px; box-sizing: border-box; background: #f6f5ed; color: #001e42; font-family: Figtree, 'Trebuchet MS', sans-serif">
+
+  <div style="position: sticky; top: 0; z-index: 5; background: #f6f5ed">
+    <header style="display: flex; align-items: center; justify-content: space-between; padding: 6px 16px 6px 6px">
+      <div style="display: flex">
+        <button type="button" class="vs-tap" aria-label="Valikko" style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: transparent; border: 0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <button type="button" class="vs-tap" aria-label="Haku" style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: transparent; border: 0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+      </div>
+      <img src="img/bbff548fc7da4a5ddc5f29400d6f3d65.svg" alt="Vieser" style="height: 26px; width: auto">
+    </header>
+    <div style="height: 4px; background: #e3d5c3" aria-hidden="true"><div style="height: 4px; background: #001e42; width: {{ edistyminen }}; transition: width .5s cubic-bezier(.16,1,.3,1)"></div></div>
+  </div>
+
+  <section style="padding: 28px 20px 36px; display: flex; flex-direction: column; gap: 18px">
+    <nav aria-label="Murupolku" style="font-size: 15px; display: flex; gap: 8px; color: #44546a"><a href="#" style="color: #44546a">Osaamispankki</a><span aria-hidden="true">/</span><span>Huolto</span></nav>
+    <h1 class="vs-rise" style="margin: 0; font-size: 46px; line-height: .98; font-weight: 900; letter-spacing: -.035em">Lattiakaivon puhdistus</h1>
+    <p class="vs-rise vs-d1" style="margin: 0; font-size: 19px; line-height: 1.5; font-weight: 500">Puhdista kaivo, jos vesi valuu hitaasti tai kaivosta tulee hajua. Suosittelemme puhdistusta ainakin kerran vuodessa.</p>
+    <p style="margin: 0; font-size: 16px; line-height: 1.55"><strong>Tarvitset</strong> saippuavettä. Kalkkitahroihin mietoa hapanta puhdistusainetta.</p>
+    <a href="#haju" class="vs-link" style="font-size: 16px; align-self: flex-start">Haju jatkuu puhdistuksen jälkeen?</a>
+  </section>
+
+  <section class="lt" style="--lt-h: 240px; --lt-yn: .74; --lt-w: 1310px; --lt-px: 59.07%; --lt-py: 46.55%">
+    <div class="lt-photo">
+      <img src="img/0c1f36c4941b8d4a79cafdac9456181c.jpg" alt="Premium-kylpyhuone: kivilaattalattia, pronssinen neliökansi, tammipenkki ja lasiseinä. AI-konseptikuva, kuvataan tuotantoon.">
+      <div class="lt-ax" aria-hidden="true"></div>
+      <div class="lt-dot" aria-hidden="true"></div>
+      <button type="button" class="vs-tap" aria-label="Toista video: lattiakaivon puhdistus" style="position: absolute; left: 16px; top: 16px; z-index: 4; display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 20px 0 12px; background: #f6f5ed; border: 0; font-size: 16px; font-weight: 700"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#001e42"/><path d="M10 8l6 4-6 4z" fill="#f6f5ed"/></svg>Katso video</button>
+    </div>
+    <div class="lt-line"><p class="lt-chip" style="left: 16px">Lattian alla</p></div>
+    <div class="lt-ground" style="padding: 0 20px 28px">
+      <div class="lt-draw" style="--lt-pt: 36px"><img src="img/0614490e63aa29df5a39793ad5847028.svg" alt="Lattiakaivo osiin purettuna, osat numeroitu: 1 kansi, 2 kehys, 3 kiilarengas, 4 nostokahva, 5 huulitiiviste, 6 vesilukko, 7 runko, 8 lähtö"></div>
+      <div style="margin-top: 20px"><ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; border-top: 2px solid #001e42"><li style="display: grid; grid-template-columns: 32px 1fr auto; gap: 10px; align-items: center; min-height: 46px; border-bottom: 1px solid rgba(0,30,66,.18)"><span style="width: 26px; height: 26px; border-radius: 50%; background: #001e42; color: #f6f5ed; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center">1</span><span style="font-size: 16px; font-weight: 700">Kansi</span><span></span></li><li style="display: grid; grid-template-columns: 32px 1fr auto; gap: 10px; align-items: center; min-height: 46px; border-bottom: 1px solid rgba(0,30,66,.18)"><span style="width: 26px; height: 26px; border-radius: 50%; background: #001e42; color: #f6f5ed; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center">2</span><span style="font-size: 16px; font-weight: 700">Kehys</span><span></span></li><li style="display: grid; grid-template-columns: 32px 1fr auto; gap: 10px; align-items: center; min-height: 46px; border-bottom: 1px solid rgba(0,30,66,.18)"><span style="width: 26px; height: 26px; border-radius: 50%; background: #001e42; color: #f6f5ed; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center">3</span><span style="font-size: 16px; font-weight: 700">Kiilarengas</span><span></span></li><li style="display: grid; grid-template-columns: 32px 1fr auto; gap: 10px; align-items: center; min-height: 46px; border-bottom: 1px solid rgba(0,30,66,.18)"><span style="width: 26px; height: 26px; border-radius: 50%; background: #001e42; color: #f6f5ed; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center">4</span><span style="font-size: 16px; font-weight: 700">Nostokahva</span><span></span></li><li style="display: grid; grid-template-columns: 32px 1fr auto; gap: 10px; align-items: center; min-height: 46px; border-bottom: 1px solid rgba(0,30,66,.18)"><span style="width: 26px; height: 26px; border-radius: 50%; background: #001e42; color: #f6f5ed; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center">5</span><span style="font-size: 16px; font-weight: 700">Harmaa huulitiiviste</span><span></span></li><li style="display: grid; grid-template-columns: 32px 1fr auto; gap: 10px; align-items: center; min-height: 46px; border-bottom: 1px solid rgba(0,30,66,.18)"><span style="width: 26px; height: 26px; border-radius: 50%; background: #001e42; color: #f6f5ed; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center">6</span><span style="font-size: 16px; font-weight: 700">Vesilukko</span><span></span></li><li style="display: grid; grid-template-columns: 32px 1fr auto; gap: 10px; align-items: center; min-height: 46px; border-bottom: 1px solid rgba(0,30,66,.18)"><span style="width: 26px; height: 26px; border-radius: 50%; background: #001e42; color: #f6f5ed; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center">7</span><span style="font-size: 16px; font-weight: 700">Kaivon runko</span><span></span></li><li style="display: grid; grid-template-columns: 32px 1fr auto; gap: 10px; align-items: center; min-height: 46px; border-bottom: 1px solid rgba(0,30,66,.18)"><span style="width: 26px; height: 26px; border-radius: 50%; background: #001e42; color: #f6f5ed; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center">8</span><span style="font-size: 16px; font-weight: 700">Viemäriputki</span><span></span></li></ol></div>
+    </div>
+  </section>
+
+  <section style="padding: 56px 20px 8px; display: flex; flex-direction: column; gap: 8px">
+    <div style="display: flex; justify-content: space-between; align-items: baseline">
+      <h2 style="margin: 0; font-size: 32px; line-height: 1.05; font-weight: 800; letter-spacing: -.025em">Puhdista näin</h2>
+      <p aria-live="polite" style="margin: 0; font-size: 15px; font-weight: 700">{{ tehtyTeksti }}</p>
+    </div>
+    <p style="margin: 0 0 20px; font-size: 15px; color: #44546a">Napauta vaihetta, kun se on tehty.</p>
+    <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column">
+      <sc-for list="{{ vaiheet }}" as="v" hint-placeholder-count="6">
+        <li style="position: relative; display: flex; flex-direction: column; padding-bottom: 28px">
+          <sc-if value="{{ v.viiva }}" hint-placeholder-val="{{ true }}">
+            <div aria-hidden="true" style="position: absolute; left: 21px; top: 50px; bottom: 6px; width: 2px; background: #dac8ae"></div>
+          </sc-if>
+          <button type="button" class="vs-tap" aria-pressed="{{ v.tehty }}" onClick="{{ v.toggle }}" style="width: 100%; display: flex; align-items: center; gap: 16px; min-height: 56px; padding: 0; background: transparent; border: 0; text-align: left">
+            <span aria-hidden="true" style="flex: none; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: {{ v.ympyraBg }}; color: {{ v.ympyraFg }}; box-shadow: inset 0 0 0 2px {{ v.ympyraReuna }}; font-size: 19px; font-weight: 800; transition: background-color .3s cubic-bezier(.16,1,.3,1)">
+              <sc-if value="{{ v.tehty }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if>
+              <sc-if value="{{ v.kesken }}" hint-placeholder-val="{{ true }}"><span>{{ v.nro }}</span></sc-if>
+            </span>
+            <span style="display: flex; flex-direction: column; gap: 2px">
+              <span style="font-size: 21px; line-height: 1.2; font-weight: 800; letter-spacing: -.01em; color: {{ v.otsikkoVari }}">{{ v.otsikko }}</span>
+              <sc-if value="{{ v.lisa }}" hint-placeholder-val="{{ false }}"><span style="align-self: flex-start; margin-top: 4px; font-size: 14px; font-weight: 600; background: #bee2e9; padding: 4px 8px">{{ v.lisa }}</span></sc-if>
+            </span>
+            <span aria-hidden="true" style="margin-left: auto; flex: none; width: 28px; height: 28px; box-shadow: inset 0 0 0 2px {{ v.ympyraReuna }}; background: {{ v.ruutuBg }}; color: #ffffff; display: flex; align-items: center; justify-content: center"><sc-if value="{{ v.tehty }}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if></span>
+          </button>
+          <sc-if value="{{ v.kesken }}" hint-placeholder-val="{{ true }}">
+            <div style="padding: 12px 0 0 60px; display: flex; flex-direction: column; gap: 14px">
+              <p style="margin: 0; font-size: 17px; line-height: 1.6">{{ v.teksti }}</p>
+              <sc-if value="{{ v.kahvaValinta }}" hint-placeholder-val="{{ false }}">
+                <div role="group" aria-label="Onko vesilukossa kahva" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+                  <button type="button" class="vs-tap" aria-pressed="{{ kahvaOn }}" onClick="{{ valitseOn }}" style="min-height: 52px; padding: 8px 12px; border: 0; box-shadow: inset 0 0 0 2px #001e42; background: {{ onBg }}; color: {{ onFg }}; font-size: 15px; font-weight: 700; text-align: left">Kahva on</button>
+                  <button type="button" class="vs-tap" aria-pressed="{{ kahvaEi }}" onClick="{{ valitseEi }}" style="min-height: 52px; padding: 8px 12px; border: 0; box-shadow: inset 0 0 0 2px #001e42; background: {{ eiBg }}; color: {{ eiFg }}; font-size: 15px; font-weight: 700; text-align: left">Ei kahvaa</button>
+                </div>
+              </sc-if>
+              <sc-if value="{{ v.vinkki }}" hint-placeholder-val="{{ false }}">
+                <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #44546a">{{ v.vinkki }}</p>
+              </sc-if>
+              <sc-if value="{{ v.kuva }}" hint-placeholder-val="{{ false }}">
+                <div class="pk" style="padding: 12px; display: flex; justify-content: center">
+                  <img src="{{ v.kuva }}" alt="{{ v.kuvaAlt }}" style="width: 100%; max-width: 260px; height: auto; display: block">
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+        </li>
+      </sc-for>
+    </ol>
+    <sc-if value="{{ valmis }}" hint-placeholder-val="{{ false }}">
+      <div role="status" class="vs-rise" style="background: #bee2e9; padding: 24px 20px; display: flex; flex-direction: column; gap: 8px">
+        <p style="margin: 0; font-size: 26px; line-height: 1.1; font-weight: 800; letter-spacing: -.02em">Valmis. Kaivo on puhdas.</p>
+        <p style="margin: 0; font-size: 16px; line-height: 1.55">Seuraava puhdistus noin vuoden päästä, tai heti kun vesi alkaa valua hitaasti.</p>
+        <a href="#" class="vs-link" style="font-size: 16px; align-self: flex-start; margin-top: 6px">Lisää muistutus kalenteriin</a>
+      </div>
+    </sc-if>
+  </section>
+
+  <section id="haju" style="margin-top: 40px; padding: 48px 20px 40px; border-top: 2px solid #001e42; display: flex; flex-direction: column; gap: 22px">
+    <h2 style="margin: 0; font-size: 32px; line-height: 1.05; font-weight: 800; letter-spacing: -.025em">Haju jatkuu?</h2>
+    <p style="margin: 0; font-size: 17px; line-height: 1.6">Hajulle on kolme tavallista syytä.</p>
+    <div style="display: flex; flex-direction: column">
+      <div style="padding: 16px 0; border-top: 1px solid #dac8ae; display: flex; flex-direction: column; gap: 4px"><p style="margin: 0; font-size: 18px; font-weight: 800">Vesilukko ei ole paikallaan</p><p style="margin: 0; font-size: 16px; line-height: 1.55">Paina vesilukko alas asti.</p></div>
+      <div style="padding: 16px 0; border-top: 1px solid #dac8ae; display: flex; flex-direction: column; gap: 4px"><p style="margin: 0; font-size: 18px; font-weight: 800">Kaivo on yhä likainen</p><p style="margin: 0; font-size: 16px; line-height: 1.55">Puhdista kaivo ja vesilukko uudelleen.</p></div>
+      <div style="padding: 16px 0; border-top: 1px solid #dac8ae; border-bottom: 1px solid #dac8ae; display: flex; flex-direction: column; gap: 4px"><p style="margin: 0; font-size: 18px; font-weight: 800">Tiiviste on vioittunut</p><p style="margin: 0; font-size: 16px; line-height: 1.55">Vaihda vesilukko uuteen. Varaosan saat jälleenmyyjältä.</p></div>
+    </div>
+    <div style="display: flex; gap: 16px; align-items: center">
+      <div class="pk" style="flex: none; width: 96px; height: 96px; display: flex; align-items: center; justify-content: center; overflow: hidden"><img src="img/c0e2d75d5064d4c1545d7fa5ecb6df2b.svg" alt="" style="width: 84px; height: auto"></div>
+      <div style="display: flex; flex-direction: column; gap: 4px"><p style="margin: 0; font-size: 18px; font-weight: 800">Vieser One vesilukko</p><p style="margin: 0; font-size: 15px; color: #44546a">Varaosa. Muille malleille omat vesilukot.</p><a href="#" class="vs-link" style="font-size: 15px; align-self: flex-start">Tunnista oma kaivomallisi</a></div>
+    </div>
+    <a href="#" class="vs-tap vs-cta" style="display: flex; align-items: center; justify-content: space-between; min-height: 60px; padding: 0 20px; background: #001e42; color: #ffffff; font-size: 18px; font-weight: 700; text-decoration: none">Löydä jälleenmyyjä<svg class="vs-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </section>
+
+  <section style="padding: 8px 20px 48px; display: flex; flex-direction: column; gap: 14px">
+    <h2 style="margin: 0; font-size: 20px; font-weight: 800">Tekninen asiakaspalvelu</h2>
+    <a href="tel:+358207464400" class="vs-tap vs-sec" style="display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 18px; box-shadow: inset 0 0 0 2px #001e42; font-size: 18px; font-weight: 700; text-decoration: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>020 746 4400</a>
+    <p style="margin: 0; font-size: 15px; color: #44546a">Vieser Oy, Keskustie 23, 61850 Kauhajoki</p>
+    <a href="#" class="vs-link" style="font-size: 16px; align-self: flex-start; margin-top: 4px">Tulostettava ohje (PDF)</a>
+  </section>
+
+  <footer style="background: #001e42; color: #f6f5ed; padding: 32px 20px 40px; display: flex; justify-content: space-between; align-items: center">
+    <p style="margin: 0; font-size: 15px; color: #bee2e9">Simply smart living</p>
+    <img src="img/9a27841f6c5d3063de282c1fb00814b5.svg" alt="Vieser" style="height: 22px; width: auto">
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":6054}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { kahva: null, tehdyt: {} };
+  }
+  renderVals() {
+    const s = this.state;
+    const nosto = s.kahva === 'on'
+      ? 'Irrota vesilukko nostamalla se kahvasta ylös.'
+      : s.kahva === 'ei'
+        ? 'Tartu vesilukon alaosaan. Taivuta alareunaa hieman viemäriputkea kohti ja nosta vesilukko vinossa asennossa ulos.'
+        : 'Onko vesilukossasi kahva? Valitse, niin näytämme oikean otteen.';
+    const data = [
+      { otsikko: 'Nosta kansi pois', teksti: 'Nosta kansiritilä tai neliökansi pois kaivon päältä.', kuva: 'img/4726ab2a3f29caeb670bd400be7ac20c.svg', kuvaAlt: 'Kansi nousee pois kehyksen päältä' },
+      { otsikko: 'Nosta vesilukko ylös', teksti: nosto, kahvaValinta: true, vinkki: 'Vesilukko voi olla tiukassa, jos sitä ei ole irrotettu pitkään aikaan.', kuva: 'img/d48feed242d9cecdde80c8b4f90cc12c.svg', kuvaAlt: 'Vesilukko nousee ylös kaivosta' },
+      { otsikko: 'Irrota virtausohjuri', kuva: 'img/e3c1e8abed1d7fc8d44996a7410b722f.svg', kuvaAlt: 'Kaivon runko korostettuna, virtausohjuri on rungon sisällä', lisa: 'Vain jos kaivossa on sivuliitäntöjä', teksti: 'Sivuliitäntöjen virtausohjurin voi irrottaa puhdistusta varten. Sivuliitännän tunnistaa toisesta putkesta kaivon kyljessä.' },
+      { otsikko: 'Pese ja huuhtele', kuva: 'img/c0e2d75d5064d4c1545d7fa5ecb6df2b.svg', kuvaAlt: 'Irrotettu vesilukko', teksti: 'Pese vesilukko ja kaivo huolellisesti ja huuhtele. Puhdista samalla kansi kummaltakin puolelta ja irrota hiukset. Teräskannesta pinttynyt lika lähtee kevyesti hankaamalla, kalkki kevyesti happamalla aineella.' },
+      { otsikko: 'Kostuta huulitiiviste', teksti: 'Tarkista, että vesilukon harmaa huulitiiviste on paikoillaan, ja kostuta se esimerkiksi saippuavedellä.', kuva: 'img/54db09522de16e6e95af0fc2d65b4612.svg', kuvaAlt: 'Vesilukko, jonka huulitiiviste on korostettu' },
+      { otsikko: 'Paina kaikki paikalleen', teksti: 'Laita virtausohjuri takaisin, jos irrotit sen. Kohdista vesilukko kaivoon oikeaan asentoon ja paina se alas asti. Paina lopuksi kansi paikalleen.', kuva: 'img/3065911e988218c19443c843b0bbd35b.svg', kuvaAlt: 'Vesilukko painetaan alas kaivoon' }
+    ];
+    const vaiheet = data.map((d, i) => {
+      const tehty = !!s.tehdyt[i];
+      return Object.assign({ lisa: '', vinkki: '', kuva: '', kuvaAlt: '', kahvaValinta: false }, d, {
+        nro: String(i + 1), tehty, kesken: !tehty, viiva: i < data.length - 1,
+        ympyraBg: tehty ? '#5b7b69' : '#f6f5ed',
+        ympyraFg: tehty ? '#ffffff' : '#001e42',
+        ympyraReuna: tehty ? '#5b7b69' : '#001e42',
+        ruutuBg: tehty ? '#5b7b69' : 'transparent',
+        otsikkoVari: tehty ? '#44546a' : '#001e42',
+        toggle: () => this.setState({ tehdyt: Object.assign({}, s.tehdyt, { [i]: !tehty }) })
+      });
+    });
+    const n = vaiheet.filter(v => v.tehty).length;
+    return {
+      vaiheet,
+      tehtyTeksti: n + ' / 6',
+      edistyminen: Math.round(n / 6 * 100) + '%',
+      valmis: n === 6,
+      kahvaOn: s.kahva === 'on', kahvaEi: s.kahva === 'ei',
+      onBg: s.kahva === 'on' ? '#001e42' : 'transparent', onFg: s.kahva === 'on' ? '#f6f5ed' : '#001e42',
+      eiBg: s.kahva === 'ei' ? '#001e42' : 'transparent', eiFg: s.kahva === 'ei' ? '#f6f5ed' : '#001e42',
+      valitseOn: () => this.setState({ kahva: 'on' }),
+      valitseEi: () => this.setState({ kahva: 'ei' })
+    };
+  }
+}
+</script>
+</body>
+</html>

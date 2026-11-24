@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Vieser One vaakakaivo DN75, tuotesivun konsepti</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="vieser.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 100%; box-sizing: border-box; background: #f6f5ed; color: #001e42; font-family: Figtree, 'Trebuchet MS', sans-serif; font-variant-numeric: tabular-nums">
+
+  <div class="vs-desk" style="background: #001e42; color: #f6f5ed">
+    <div style="max-width: 1360px; margin: 0 auto; box-sizing: border-box; padding: 0 40px; min-height: 40px; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px">
+      <button type="button" class="vs-tap" style="background: transparent; border: 0; color: #f6f5ed; font-weight: 600; min-height: 40px; display: flex; align-items: center; gap: 6px; padding: 0">Suomi<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div style="display: flex; gap: 24px"><a href="#" style="color: #f6f5ed; text-decoration: none">Jälleenmyyjät</a><a href="#" style="color: #f6f5ed; text-decoration: none">Tuotekoulutukset</a><a href="#" style="color: #f6f5ed; text-decoration: none">Ota yhteyttä</a></div>
+    </div>
+  </div>
+
+  <header style="border-bottom: 1px solid #dac8ae">
+    <div style="max-width: 1360px; margin: 0 auto; box-sizing: border-box; padding: 0 clamp(8px, 3vw, 40px) 0 clamp(4px, 3vw, 40px); min-height: 72px; display: flex; align-items: center; gap: 12px">
+      <button type="button" class="vs-tap vs-mob" aria-label="Valikko" style="width: 48px; height: 48px; align-items: center; justify-content: center; background: transparent; border: 0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <nav aria-label="Päävalikko" class="vs-desk" style="flex: 1; display: flex; gap: 32px; font-size: 16px; font-weight: 700">
+        <a href="#" aria-current="true" style="color: #001e42; text-decoration: none; box-shadow: inset 0 -3px 0 #993300; padding: 24px 0">Tuotteet</a>
+        <a href="#" style="color: #001e42; text-decoration: none; padding: 24px 0">Suunnittelu ja asennus</a>
+        <a href="#" style="color: #001e42; text-decoration: none; padding: 24px 0">Osaamispankki</a>
+        <a href="#" style="color: #001e42; text-decoration: none; padding: 24px 0">Materiaalipankki</a>
+      </nav>
+      <div class="vs-mob" style="flex: 1"></div>
+      <button type="button" class="vs-tap" aria-label="Haku" style="flex: none; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: transparent; border: 0"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+      <a href="#" class="vs-tap" aria-label="Projektikori, {{ koriMaara }} kohdetta" style="flex: none; min-height: 48px; padding: 0 10px; display: flex; align-items: center; gap: 8px; color: #001e42; text-decoration: none; font-size: 15px; font-weight: 700"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="4" width="14" height="17"/><path d="M9 9h6M9 13h6M9 17h4"/></svg><span class="vs-desk">Projektikori</span><sc-if value="{{ koriEiTyhja }}" hint-placeholder-val="{{ false }}"><span style="min-width: 22px; height: 22px; border-radius: 11px; background: #001e42; color: #ffffff; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center">{{ koriMaara }}</span></sc-if></a>
+      <img src="img/bbff548fc7da4a5ddc5f29400d6f3d65.svg" alt="Vieser, etusivulle" style="flex: none; height: 30px; width: auto; margin-left: 8px">
+    </div>
+  </header>
+
+  <main>
+    <section style="max-width: 1360px; margin: 0 auto; box-sizing: border-box; padding: clamp(20px, 3vw, 32px) clamp(20px, 3vw, 40px) clamp(56px, 7vw, 112px)">
+      <nav aria-label="Murupolku" style="font-size: 15px; display: flex; flex-wrap: wrap; gap: 8px; color: #44546a; margin-bottom: clamp(20px, 3vw, 40px)"><a href="#" style="color: #44546a">Tuotteet</a><span aria-hidden="true">/</span><a href="#" style="color: #44546a">Lattiakaivot</a><span aria-hidden="true">/</span><span>Vieser One vaakakaivo DN75</span></nav>
+      <div style="display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 80px); align-items: flex-start">
+        <div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+          <div class="vs-hero-media pk" style="position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden">
+            <div class="pk-shadow" aria-hidden="true" style="opacity: {{ kuva.varjo }}"></div>
+            <img class="vs-prod vs-fadein" src="{{ kuva.src }}" alt="{{ kuva.alt }}" style="position: relative; width: {{ kuva.koko }}; height: {{ kuva.koko }}; object-fit: contain">
+          </div>
+          <p style="margin: 0; font-size: 14px; color: #44546a">Toimitetaan valusuojalla. Kansisto valitaan erikseen.</p>
+          <div role="group" aria-label="Kuvat" style="display: flex; gap: 24px">
+            <sc-for list="{{ kuvat }}" as="k" hint-placeholder-count="3">
+              <button type="button" class="vs-tap" aria-pressed="{{ k.valittu }}" onClick="{{ k.valitse }}" style="min-height: 44px; padding: 0; background: transparent; border: 0; box-shadow: {{ k.alleviiva }}; font-size: 15px; font-weight: 700; color: {{ k.vari }}">{{ k.nimi }}</button>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+          <div style="display: flex; flex-direction: column; gap: 16px">
+            <h1 class="vs-rise" style="margin: 0; font-size: clamp(44px, 5.6vw, 84px); line-height: .92; font-weight: 900; letter-spacing: -.04em; text-wrap: balance">Vieser One vaakakaivo DN75</h1>
+            <p class="vs-rise vs-d1" style="margin: 0; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; font-weight: 500; max-width: 32em">Lattiakaivo 75 mm viemäriliitoksella. Puu- ja betonirakenteisiin, laatta-, muovimatto- ja massalattioihin.</p>
+            <ul aria-label="Tuotteen edut" style="margin: 4px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; border-top: 1px solid #dac8ae">
+              <li style="display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 14px; align-items: start; padding: 12px 0; border-bottom: 1px solid #dac8ae"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#001e42" stroke-width="2.8" stroke-linecap="square" aria-hidden="true" style="margin-top: 3px"><path d="M4 12.5l5 5L20 6.5"/></svg><span style="font-size: 17px; line-height: 1.5; color: #44546a"><strong style="color: #001e42; font-weight: 800">Tyyppihyväksytty</strong> Suomessa, hyväksyntä ladattavissa</span></li>
+              <li style="display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 14px; align-items: start; padding: 12px 0; border-bottom: 1px solid #dac8ae"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#001e42" stroke-width="2.8" stroke-linecap="square" aria-hidden="true" style="margin-top: 3px"><path d="M4 12.5l5 5L20 6.5"/></svg><span style="font-size: 17px; line-height: 1.5; color: #44546a"><strong style="color: #001e42; font-weight: 800">Irrotettava vesilukko</strong> nousee kahvasta, puhdistus käy nopeasti</span></li>
+              <li style="display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 14px; align-items: start; padding: 12px 0; border-bottom: 1px solid #dac8ae"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#001e42" stroke-width="2.8" stroke-linecap="square" aria-hidden="true" style="margin-top: 3px"><path d="M4 12.5l5 5L20 6.5"/></svg><span style="font-size: 17px; line-height: 1.5; color: #44546a"><strong style="color: #001e42; font-weight: 800">Yhteensopiva</strong> kaikkien Vieserin korokerenkaiden ja kansistojen kanssa</span></li>
+            </ul>
+          </div>
+
+          <dl style="margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding: 20px 0; border-top: 2px solid #001e42; border-bottom: 1px solid #dac8ae">
+            <div style="display: flex; flex-direction: column-reverse; gap: 4px"><dt style="font-size: 14px; font-weight: 500; color: #44546a">virtaama l/s</dt><dd style="margin: 0; font-size: clamp(34px, 3.4vw, 48px); line-height: 1; font-weight: 800; letter-spacing: -.03em">1,6</dd></div>
+            <div style="display: flex; flex-direction: column-reverse; gap: 4px"><dt style="font-size: 14px; font-weight: 500; color: #44546a">lähtö</dt><dd style="margin: 0; font-size: clamp(34px, 3.4vw, 48px); line-height: 1; font-weight: 800; letter-spacing: -.03em">DN75</dd></div>
+            <div style="display: flex; flex-direction: column-reverse; gap: 4px"><dt style="font-size: 14px; font-weight: 500; color: #44546a">korkeus mm</dt><dd style="margin: 0; font-size: clamp(34px, 3.4vw, 48px); line-height: 1; font-weight: 800; letter-spacing: -.03em">145</dd></div>
+          </dl>
+
+          <div style="display: flex; flex-direction: column">
+            <sc-for list="{{ tunnisteet }}" as="t" hint-placeholder-count="3">
+              <div style="display: grid; grid-template-columns: 88px minmax(0, 1fr) auto; align-items: center; gap: 8px; min-height: 52px; border-bottom: 1px solid #dac8ae">
+                <span style="font-size: 14px; font-weight: 500; color: #44546a">{{ t.nimi }}</span>
+                <span style="font-size: clamp(16px, 1.4vw, 19px); font-weight: 700">{{ t.arvo }}</span>
+                <button type="button" class="vs-tap" onClick="{{ t.kopioi }}" aria-label="{{ t.aria }}" style="min-height: 44px; min-width: 92px; padding: 0 0 0 8px; display: flex; align-items: center; justify-content: flex-end; gap: 8px; background: transparent; border: 0; color: {{ t.vari }}; font-size: 15px; font-weight: 700"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="12" height="12"/><path d="M16 8V4H4v12h4"/></svg>{{ t.tila }}</button>
+              </div>
+            </sc-for>
+            <p aria-live="polite" style="margin: 0; height: 0; overflow: hidden">{{ kopioIlmoitus }}</p>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px">
+            <a href="#" class="vs-tap vs-cta" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; padding: 0 24px; background: #001e42; color: #ffffff; font-size: 18px; font-weight: 700; text-decoration: none"><span class="vs-desk">Katso hinta ja saatavuus kaupoista</span><span class="vs-mob">Hinta ja saatavuus kaupoista</span><svg class="vs-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #44546a">Hinnat ja tilaukset LVI-tukkujen ja jälleenmyyjien kautta.</p>
+            <button type="button" class="vs-tap vs-sec" aria-pressed="{{ tuoteKorissa }}" onClick="{{ toggleTuote }}" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; padding: 0 24px; background: {{ koriBg }}; color: {{ koriFg }}; border: 0; box-shadow: inset 0 0 0 2px #001e42; font-size: 17px; font-weight: 700; text-align: left">{{ koriTeksti }}<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="{{ koriIkoni }}"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="osat" class="lt">
+      <div class="lt-ground">
+        <div class="lt-grid" style="--lt-dw: 500px; max-width: 1360px; margin: 0 auto; box-sizing: border-box; padding: 0 clamp(20px, 3vw, 40px) clamp(48px, 6vw, 96px)">
+          <div style="padding-top: clamp(28px, 6vw, 88px); display: flex; flex-direction: column; gap: 18px">
+            <h2 id="osat" style="margin: 0; font-size: clamp(32px, 3.2vw, 48px); line-height: 1; font-weight: 800; letter-spacing: -.03em">Vesilukko irtoaa kahvasta nostamalla.</h2>
+            <p style="margin: 0; font-size: 17px; line-height: 1.6">Puhdista kerran vuodessa tai kun vesi alkaa valua hitaasti.</p>
+            <p style="margin: 0; font-size: 17px; line-height: 1.6">Varaosina: <a href="#" class="vs-link">kiilarengas ja tiiviste</a>, <a href="#" class="vs-link">vesilukko</a> ja <a href="#" class="vs-link">valusuojakooste</a>.</p>
+            <a href="Ohje-scrolly.dc.html" class="vs-link" style="font-size: 17px; align-self: flex-start">Puhdistusohje vaihe vaiheelta</a>
+          </div>
+          <div class="lt-draw lt-noax lt-span" style="--lt-pt: clamp(28px, 5vw, 72px)"><img class="vs-desk" src="img/c9d9668b7a9707ce1a774d994596bbd4.svg" alt="Lattiakaivo osiin purettuna, numerot ja nimet: 1 kansi, 2 kehys, 3 kiilarengas ja tiiviste, 4 nostokahva, 5 harmaa huulitiiviste, 6 vesilukko, 7 runko, 8 lähtö DN75" style="max-width: 800px"><img class="vs-mob" src="img/1d3a249a09562d04234d87575ecfdc28.svg" alt="Lattiakaivo osiin purettuna, numerot ja nimet: 1 kansi, 2 kehys, 3 kiilarengas ja tiiviste, 4 nostokahva, 5 harmaa huulitiiviste, 6 vesilukko, 7 runko, 8 lähtö DN75"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dokumentit" style="max-width: 1360px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 7vw, 112px) clamp(20px, 3vw, 40px) 0; display: flex; flex-direction: column; gap: 28px">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+        <h2 style="margin: 0; font-size: clamp(34px, 3.6vw, 56px); line-height: .98; font-weight: 800; letter-spacing: -.03em">Dokumentit</h2>
+      </div>
+      <div role="tablist" aria-label="Työvaihe" class="vs-tabs" style="border-bottom: 1px solid #dac8ae">
+        <sc-for list="{{ valilehdet }}" as="v" hint-placeholder-count="4">
+          <button type="button" role="tab" class="vs-tap" aria-selected="{{ v.valittu }}" onClick="{{ v.valitse }}" style="min-height: 52px; padding: 0; border: 0; background: transparent; box-shadow: {{ v.alleviiva }}; color: {{ v.vari }}; font-size: 18px; font-weight: 700; text-align: left">{{ v.nimi }}</button>
+        </sc-for>
+      </div>
+      <p style="margin: 0; display: flex; align-items: center; gap: 10px; font-size: 15px; color: #44546a"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18"/><path d="M7 12.5l3.5 3.5L17 9"/></svg>Rastita tiedostot, jotka haluat ladata kerralla yhtenä ZIP-tiedostona. Yksittäisen tiedoston saat Lataa-linkistä.</p>
+      <ul role="tabpanel" style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; border-top: 1px solid #dac8ae">
+        <sc-for list="{{ dokut }}" as="d" hint-placeholder-count="5">
+          <li class="vs-row" style="border-bottom: 1px solid #dac8ae; display: flex; align-items: center; gap: 16px; padding: 0 8px">
+            <label style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 18px; min-height: 76px; cursor: pointer">
+              <input type="checkbox" class="vs-check" checked="{{ d.valittu }}" onChange="{{ d.vaihda }}" aria-label="{{ d.aria }}">
+              <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px"><span style="font-size: 18px; font-weight: 700">{{ d.nimi }}</span><span style="font-size: 15px; color: #44546a">{{ d.kuvaus }}</span></span>
+            </label>
+            <span style="flex: none; font-size: 13px; font-weight: 800; letter-spacing: .06em; padding: 5px 8px; background: #edebe3">{{ d.tyyppi }}</span>
+            <a href="#" class="vs-link" style="flex: none; font-size: 15px; display: inline-flex; align-items: center; min-height: 44px">{{ d.toiminto }}</a>
+          </li>
+        </sc-for>
+      </ul>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
+        <button type="button" class="vs-tap vs-sec vs-full-mob" onClick="{{ lataaValitut }}" style="min-height: 56px; padding: 0 24px; border: 0; box-shadow: inset 0 0 0 2px #001e42; background: transparent; font-size: 17px; font-weight: 700; opacity: {{ toimintoOpacity }}">Lataa valitut ZIP-tiedostona ({{ valittuMaara }})</button>
+        <p aria-live="polite" style="margin: 0; font-size: 15px; font-weight: 600">{{ dokuIlmoitus }}</p>
+      </div>
+    </section>
+
+    <section id="tekniset" style="max-width: 1360px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 7vw, 112px) clamp(20px, 3vw, 40px)">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; padding-bottom: clamp(20px, 2.5vw, 32px)">
+        <h2 style="margin: 0; font-size: clamp(34px, 3.6vw, 56px); line-height: .98; font-weight: 800; letter-spacing: -.03em">Tekniset tiedot</h2>
+        <a href="#" class="vs-link" style="font-size: 16px">Lataa tuotekortti (PDF)</a>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: clamp(32px, 5vw, 72px); align-items: flex-start; border-top: 2px solid #001e42">
+        <dl style="flex: 1 1 520px; min-width: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(20px, 3vw, 48px)">
+            <div style="padding: 28px 0 30px; display: flex; flex-direction: column; gap: 8px">
+              <dt style="font-size: 14px; font-weight: 500; color: #44546a">Lähtö</dt>
+              <dd style="margin: 0; font-size: clamp(19px, 1.7vw, 24px); line-height: 1.2; font-weight: 800; letter-spacing: -.01em">DN75, vaaka</dd>
+            </div>
+            <div style="padding: 28px 0 30px; display: flex; flex-direction: column; gap: 8px">
+              <dt style="font-size: 14px; font-weight: 500; color: #44546a">Virtaama</dt>
+              <dd style="margin: 0; font-size: clamp(19px, 1.7vw, 24px); line-height: 1.2; font-weight: 800; letter-spacing: -.01em">1,6 l/s</dd>
+            </div>
+            <div style="padding: 28px 0 30px; border-top: 1px solid #dac8ae; display: flex; flex-direction: column; gap: 8px">
+              <dt style="font-size: 14px; font-weight: 500; color: #44546a">Mitat</dt>
+              <dd style="margin: 0; font-size: clamp(19px, 1.7vw, 24px); line-height: 1.2; font-weight: 800; letter-spacing: -.01em">205 × 222 × 145 mm</dd>
+            </div>
+            <div style="padding: 28px 0 30px; border-top: 1px solid #dac8ae; display: flex; flex-direction: column; gap: 8px">
+              <dt style="font-size: 14px; font-weight: 500; color: #44546a">Kauluksen halkaisija</dt>
+              <dd style="margin: 0; font-size: clamp(19px, 1.7vw, 24px); line-height: 1.2; font-weight: 800; letter-spacing: -.01em">Ø 167 mm</dd>
+            </div>
+            <div style="padding: 28px 0 30px; border-top: 1px solid #dac8ae; display: flex; flex-direction: column; gap: 8px">
+              <dt style="font-size: 14px; font-weight: 500; color: #44546a">Materiaali</dt>
+              <dd style="margin: 0; font-size: clamp(19px, 1.7vw, 24px); line-height: 1.2; font-weight: 800; letter-spacing: -.01em">Polypropeeni (PP)</dd>
+            </div>
+            <div style="padding: 28px 0 30px; border-top: 1px solid #dac8ae; display: flex; flex-direction: column; gap: 8px">
+              <dt style="font-size: 14px; font-weight: 500; color: #44546a">Paino</dt>
+              <dd style="margin: 0; font-size: clamp(19px, 1.7vw, 24px); line-height: 1.2; font-weight: 800; letter-spacing: -.01em">0,5 kg</dd>
+            </div>
+            <div style="padding: 28px 0 30px; border-top: 1px solid #dac8ae; display: flex; flex-direction: column; gap: 8px">
+              <dt style="font-size: 14px; font-weight: 500; color: #44546a">Lattiamateriaali</dt>
+              <dd style="margin: 0; font-size: clamp(19px, 1.7vw, 24px); line-height: 1.2; font-weight: 800; letter-spacing: -.01em">Laatta, muovimatto, massa</dd>
+            </div>
+            <div style="padding: 28px 0 30px; border-top: 1px solid #dac8ae; display: flex; flex-direction: column; gap: 8px">
+              <dt style="font-size: 14px; font-weight: 500; color: #44546a">Pakkaus</dt>
+              <dd style="margin: 0; font-size: clamp(19px, 1.7vw, 24px); line-height: 1.2; font-weight: 800; letter-spacing: -.01em">20 / laatikko, 160 / lava</dd>
+            </div>
+        </dl>
+        <figure style="flex: 1 1 360px; min-width: 0; margin: 0; padding-top: 20px; display: flex; flex-direction: column; gap: 16px">
+          <div class="pk" style="aspect-ratio: 5 / 4; display: flex; align-items: center; justify-content: center; overflow: hidden"><img class="vs-prod" src="img/edf8d7847230ad0e3a14f94f2cc874d7.jpg" alt="Mittakuva: korkeus 145 mm, kaulus Ø 167 mm, laippa 222 × 205 mm, lähtö Ø 75 mm" style="width: 118%; height: 118%; object-fit: contain"></div>
+          <figcaption style="display: flex; flex-direction: column; gap: 8px">
+            <strong style="font-size: 16px">Pakkauksessa</strong>
+            <span style="font-size: 16px; line-height: 1.55; color: #44546a">Kaivo, vesilukko, valusuoja, kiilarengas ja tiiviste sekä kiilarenkaan asennustyökalu.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section style="background: #ece6da; color: #001e42; border-top: 1px solid #dac8ae">
+      <div style="max-width: 1360px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 7vw, 104px) clamp(20px, 3vw, 40px); display: flex; flex-direction: column; gap: 32px">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+          <h2 style="margin: 0; font-size: clamp(34px, 3.6vw, 56px); line-height: .98; font-weight: 800; letter-spacing: -.03em">Sopii yhteen</h2>
+          <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #44546a; max-width: 30em">Korota kaivoa korokerenkaalla. Korkeammalle valutukipakkauksella, 345 mm asti.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 24px">
+          <a href="#" class="vs-lift" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: #001e42">
+            <div class="vs-acc pk" style=" aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center"><img class="vs-prod" src="img/7634616fbb291ec3b3b48174bd25c385.jpg" alt="" style="width: 70%; height: 80%; object-fit: contain"></div>
+            <div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 20px; font-weight: 800">Korokerengas 25-88 mm</span><span style="font-size: 15px; color: #44546a">Säädettävä korotus lattiarakenteen mukaan</span></div>
+          </a>
+          <a href="#" class="vs-lift" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: #001e42">
+            <div class="vs-acc pk" style=" aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center"><img class="vs-prod" src="img/92ac4e2bd8368510fc03254cf6c001dc.jpg" alt="" style="width: 70%; height: 80%; object-fit: contain"></div>
+            <div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 20px; font-weight: 800">Valutukipakkaus</span><span style="font-size: 15px; color: #44546a">Korotus 345 mm asti · LVI 3315948</span></div>
+          </a>
+          <a href="#" class="vs-lift" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: #001e42">
+            <div class="vs-acc pk" style=" aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center"><img class="vs-prod" src="img/7d87ad600d6baa3867ab3a54bc1c2a9f.jpg" alt="" style="width: 70%; height: 80%; object-fit: contain"></div>
+            <div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 20px; font-weight: 800">Vedeneristyslaippa</span><span style="font-size: 15px; color: #44546a">Vedeneristyksen liitos kaivoon</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="background: #001e42; color: #f6f5ed; border-top: 1px solid rgba(246,245,237,.2)">
+    <div style="max-width: 1360px; margin: 0 auto; box-sizing: border-box; padding: 40px clamp(20px, 3vw, 40px) 48px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: flex-end">
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <p style="margin: 0; font-size: 18px; font-weight: 700">Tekninen asiakaspalvelu</p>
+        <a href="tel:+358207464400" style="color: #f6f5ed; font-size: 17px">020 746 4400</a>
+        <p style="margin: 0; font-size: 15px; color: #bee2e9">Vieser Oy, Keskustie 23, 61850 Kauhajoki</p>
+      </div>
+      <img src="img/9a27841f6c5d3063de282c1fb00814b5.svg" alt="Vieser" style="height: 28px; width: auto">
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4652}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { kuva: 0, kopioitu: null, virhe: null, tuoteKorissa: false, tab: 0, valitut: {}, koriDokut: 0, dokuIlmoitus: '' };
+  }
+  kopioi(key, arvo) {
+    const ok = () => this.setState({ kopioitu: key, virhe: null });
+    const fail = () => this.setState({ virhe: key, kopioitu: null });
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(arvo).then(ok, fail);
+      else fail();
+    } catch (e) { fail(); }
+  }
+  renderVals() {
+    const s = this.state;
+    const kuvat = [
+      { nimi: 'Tuotekuva', src: 'img/df04c3ff91d67606627e768e58c748ac.jpg', alt: 'Vieser One vaakakaivo DN75 sinisellä valusuojalla', koko: '78%', varjo: 1 },
+      { nimi: 'Mittakuva', src: 'img/edf8d7847230ad0e3a14f94f2cc874d7.jpg', alt: 'Mittakuva: korkeus 145, kaulus 167, laippa 222 × 205, lähtö 75 mm', koko: '88%', varjo: 0 },
+      { nimi: 'Osat', src: 'img/19de9c9f3c45739e14b10a42d8989d1f.svg', alt: 'Kaivo osiin purettuna', koko: '86%', varjo: 0 }
+    ];
+    const tunn = [
+      { k: 'lvi', nimi: 'LVI-numero', arvo: '3315956' },
+      { k: 'ean', nimi: 'EAN', arvo: '6418685526106' },
+      { k: 'nro', nimi: 'Vieser nro', arvo: '52610' }
+    ];
+    const tabit = [
+      { nimi: 'Suunnittelu', dokut: [
+        { id: 'mpdf', tyyppi: 'PDF', nimi: 'Mittakuva', kuvaus: 'Mitat ja liitännät' },
+        { id: 'mdwg', tyyppi: 'DWG', nimi: 'Mittakuva CAD', kuvaus: 'CAD-ohjelmiin' },
+        { id: 'bim', tyyppi: 'IFC', nimi: 'BIM-objekti', kuvaus: 'Tietomallinnukseen' },
+        { id: 'tk', tyyppi: 'PDF', nimi: 'Tuotekortti', kuvaus: 'Yhteenveto tukulle ja työmaalle' },
+        { id: 'epd', tyyppi: 'EPD', nimi: 'Ympäristöseloste', kuvaus: 'Hiilijalanjälki ja materiaalit' }
+      ]},
+      { nimi: 'Asennus', dokut: [
+        { id: 'ao', tyyppi: 'PDF', nimi: 'Asennusohje', kuvaus: 'Tulostettava ohje' },
+        { id: 'av', tyyppi: 'VIDEO', nimi: 'Asennusvideo', kuvaus: 'Avautuu tälle sivulle' },
+        { id: 'rk', tyyppi: 'PDF', nimi: 'Rakennekuvat', kuvaus: 'Eri lattiarakenteille' }
+      ]},
+      { nimi: 'Huolto', dokut: [
+        { id: 'po', tyyppi: 'SIVU', nimi: 'Puhdistusohje', kuvaus: 'Vaihe vaiheelta, myös puhelimella' },
+        { id: 'ho', tyyppi: 'PDF', nimi: 'Huolto-ohje', kuvaus: 'Tulostettava versio' }
+      ]},
+      { nimi: 'Hyväksynnät', dokut: [
+        { id: 'th', tyyppi: 'PDF', nimi: 'Tyyppihyväksyntä', kuvaus: 'Suomi' },
+        { id: 'ts', tyyppi: 'PDF', nimi: 'Tuotesertifikaatti', kuvaus: 'Voimassaolo näkyy dokumentissa' }
+      ]}
+    ];
+    const kaikki = [].concat.apply([], tabit.map(t => t.dokut));
+    const valittuMaara = kaikki.filter(d => s.valitut[d.id]).length;
+    const koriMaara = s.tuoteKorissa ? 1 : 0;
+    const valittuNimet = kaikki.filter(d => s.valitut[d.id]).map(d => d.nimi + ' ' + d.tyyppi).join(', ');
+    return {
+      kuva: kuvat[s.kuva],
+      kuvat: kuvat.map((k, i) => ({
+        nimi: k.nimi, valittu: s.kuva === i,
+        alleviiva: s.kuva === i ? 'inset 0 -3px 0 #993300' : 'none',
+        vari: s.kuva === i ? '#001e42' : '#44546a',
+        valitse: () => this.setState({ kuva: i })
+      })),
+      tunnisteet: tunn.map(t => Object.assign({}, t, {
+        tila: s.kopioitu === t.k ? 'Kopioitu' : s.virhe === t.k ? 'Ei onnistunut' : 'Kopioi',
+        vari: s.virhe === t.k ? '#993300' : '#001e42',
+        aria: 'Kopioi ' + t.nimi + ' ' + t.arvo,
+        kopioi: () => this.kopioi(t.k, t.arvo)
+      })),
+      kopioIlmoitus: s.kopioitu ? 'Kopioitu leikepöydälle' : s.virhe ? 'Kopiointi ei onnistunut, valitse numero ja kopioi käsin' : '',
+      tuoteKorissa: s.tuoteKorissa,
+      koriMaara: String(koriMaara),
+      koriEiTyhja: koriMaara > 0,
+      koriTeksti: s.tuoteKorissa ? 'Projektikorissa' : 'Lisää projektikoriin',
+      koriIkoni: s.tuoteKorissa ? 'M5 12.5l4.5 4.5L19 7.5' : 'M12 5v14M5 12h14',
+      koriBg: s.tuoteKorissa ? '#001e42' : 'transparent',
+      koriFg: s.tuoteKorissa ? '#f6f5ed' : '#001e42',
+      toggleTuote: () => this.setState({ tuoteKorissa: !s.tuoteKorissa }),
+      naytaHyvaksynnat: () => this.setState({ tab: 3 }),
+      valilehdet: tabit.map((t, i) => ({
+        nimi: t.nimi, valittu: s.tab === i,
+        alleviiva: s.tab === i ? 'inset 0 -3px 0 #993300' : 'none',
+        vari: s.tab === i ? '#001e42' : '#44546a',
+        valitse: () => this.setState({ tab: i })
+      })),
+      dokut: tabit[s.tab].dokut.map(d => Object.assign({}, d, {
+        toiminto: d.tyyppi === 'SIVU' ? 'Avaa' : d.tyyppi === 'VIDEO' ? 'Katso' : 'Lataa',
+        valittu: !!s.valitut[d.id],
+        aria: 'Valitse ' + d.nimi + ' ' + d.tyyppi,
+        vaihda: () => this.setState({ valitut: Object.assign({}, s.valitut, { [d.id]: !s.valitut[d.id] }), dokuIlmoitus: '' })
+      })),
+      valittuMaara: String(valittuMaara),
+      toimintoOpacity: 1,
+      lataaValitut: () => this.setState({ dokuIlmoitus: valittuMaara ? valittuMaara + ' tiedostoa ladataan yhtenä ZIP-pakettina.' : 'Valitse ensin vähintään yksi dokumentti.' }),
+      dokuIlmoitus: s.dokuIlmoitus || (valittuMaara ? 'Valittu: ' + valittuNimet : '')
+    };
+  }
+}
+</script>
+</body>
+</html>

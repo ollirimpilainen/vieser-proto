@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Lattiakaivon puhdistus vaihe vaiheelta</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="vieser.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap">
+<style>
+body{margin:0;background:#f6f5ed}
+.sc-wrap{max-width:1360px;margin:0 auto;box-sizing:border-box}
+.sc-grid{display:block}
+.sc-stage{position:sticky;top:0;z-index:3;height:56vh;min-height:400px;max-height:540px;background:linear-gradient(#f6f5ed 0%,#f6f5ed 12%,#efe9de 40%,#e7dfd1 66.73%);overflow:hidden;border-bottom:1px solid #dac8ae}
+.sc-section{position:absolute;left:0;right:0;top:66.73%;bottom:0;background-color:#e3d5c3;background-image:radial-gradient(rgba(0,30,66,.10) .8px,transparent 1.1px),radial-gradient(rgba(0,30,66,.06) .8px,transparent 1.1px);background-size:7px 7px,11px 11px;background-position:0 0,3px 5px}
+.sc-art{position:absolute;left:50%;top:50%;height:min(94cqh,128cqw);aspect-ratio:400/550;transform:translate(-50%,-50%)}
+.sc-floorline{position:absolute;left:-200vw;right:-200vw;top:66.73%;height:2px;margin-top:-1px;background:#001e42}
+.sc-axis{position:absolute;left:50%;top:0;bottom:0;border-left:1px dashed rgba(0,30,66,.4)}
+.sc-l{position:absolute;inset:0;width:100%;height:100%;display:block;transition:transform 1.2s cubic-bezier(.16,1,.3,1),opacity .5s cubic-bezier(.16,1,.3,1)}
+.sc-arrow{position:absolute;left:78%;width:34px;height:34px;transition:top 1.2s cubic-bezier(.16,1,.3,1),opacity .4s ease-out;color:#993300}
+.sc-drop{position:absolute;width:7px;height:10px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:#bee2e9;box-shadow:inset 0 0 0 1px #001e42;animation:sc-drip 1.6s cubic-bezier(.5,0,.9,.6) infinite}
+@keyframes sc-drip{0%{transform:translateY(0);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateY(54px);opacity:0}}
+.sc-chip{position:absolute;right:16px;top:66.73%;transform:translateY(-50%);background:#001e42;color:#f6f5ed;font-size:13px;font-weight:700;padding:6px 10px}
+.sc-top{position:absolute;left:16px;right:16px;top:14px;display:flex;justify-content:space-between;align-items:center;z-index:9}
+.sc-ctrl{position:absolute;left:12px;right:12px;bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:12px;z-index:9}
+.sc-btn{width:48px;height:48px;border:0;background:#f6f5ed;box-shadow:inset 0 0 0 2px #001e42;display:flex;align-items:center;justify-content:center;color:#001e42}
+.sc-btn[disabled]{opacity:.35;cursor:default}
+.sc-rail{display:flex;gap:4px;flex:1;justify-content:center}
+.sc-railb{flex:1;max-width:36px;height:44px;border:0;padding:0;background:transparent;display:flex;align-items:center}
+.sc-railb span{display:block;width:100%;height:4px;transition:background-color .4s ease-out}
+.sc-steps{list-style:none;margin:0;padding:0 20px}
+.sc-step{min-height:min(64vh,520px);padding:24px 0 0;box-sizing:border-box}
+.sc-num{margin:0;font-size:64px;line-height:.9;font-weight:900;letter-spacing:-.04em;transition:color .4s ease-out}
+.sc-h{margin:14px 0 0;font-size:28px;line-height:1.08;font-weight:800;letter-spacing:-.02em}
+.sc-p{margin:12px 0 0;font-size:18px;line-height:1.6;max-width:30em}
+.sc-alt{margin:16px 0 0;padding:14px 0 0;border-top:1px solid #dac8ae;font-size:16px;line-height:1.55;max-width:30em}
+.sc-tag{display:inline-block;margin:14px 0 0;background:#bee2e9;font-size:14px;font-weight:600;padding:5px 9px}
+@media (min-width:900px){
+  .sc-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);column-gap:64px;padding:0 40px}
+  .sc-stage{height:min(100vh,960px);max-height:none;min-height:560px;border-bottom:0}
+  .sc-art{height:min(86cqh,125cqw)}
+  .sc-steps{padding:min(30vh,280px) 0 min(40vh,360px)}
+  .sc-step{min-height:min(80vh,720px);padding:0}
+  .sc-num{font-size:96px}
+  .sc-h{font-size:40px}
+  .sc-p{font-size:20px}
+}
+@media (prefers-reduced-motion:reduce){.sc-l,.sc-arrow{transition:none}.sc-drop{animation:none}}
+</style>
+</helmet>
+<div ref="{{ setRoot }}" style="width: 100%; box-sizing: border-box; background: #f6f5ed; color: #001e42; font-family: Figtree, 'Trebuchet MS', sans-serif">
+
+  <header class="sc-wrap" style="display: flex; align-items: center; justify-content: space-between; padding: 6px clamp(16px, 3vw, 40px) 6px clamp(6px, 3vw, 40px)">
+    <div style="display: flex">
+      <button type="button" class="vs-tap" aria-label="Valikko" style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: transparent; border: 0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <button type="button" class="vs-tap" aria-label="Haku" style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: transparent; border: 0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+    </div>
+    <img src="img/bbff548fc7da4a5ddc5f29400d6f3d65.svg" alt="Vieser" style="height: 26px; width: auto">
+  </header>
+
+  <section class="sc-wrap" style="padding: 24px clamp(20px, 3vw, 40px) 32px; display: flex; flex-direction: column; gap: 16px">
+    <nav aria-label="Murupolku" style="font-size: 15px; display: flex; gap: 8px; color: #44546a"><a href="#" style="color: #44546a">Osaamispankki</a><span aria-hidden="true">/</span><span>Huolto</span></nav>
+    <h1 class="vs-rise" style="margin: 0; font-size: clamp(46px, 6vw, 96px); line-height: .94; font-weight: 900; letter-spacing: -.04em; max-width: 9em">Lattiakaivon puhdistus</h1>
+    <p class="vs-rise vs-d1" style="margin: 0; font-size: clamp(18px, 1.6vw, 22px); line-height: 1.5; font-weight: 500; max-width: 32em">Puhdista kaivo, jos vesi valuu hitaasti tai kaivosta tulee hajua, ja ainakin kerran vuodessa. Vaihe kerrallaan, kaikki lattian tasolta.</p>
+    <a href="#haju" class="vs-link" style="font-size: 16px; align-self: flex-start">Haju jatkuu puhdistuksen jälkeen?</a>
+  </section>
+
+  <section class="sc-grid sc-wrap" aria-label="Puhdista kaivo näin">
+    <div class="sc-stage">
+      <div class="sc-section" aria-hidden="true"></div>
+      <p class="sc-chip" aria-hidden="true">Lattiataso</p>
+      <div class="sc-art" role="img" aria-label="{{ kuvaus }}">
+        <div class="sc-floorline" aria-hidden="true"></div>
+        <img class="sc-l" src="img/04797278d1b7baa1c6b7498c4234c177.svg" alt="" style="z-index: 1">
+        <div class="sc-axis" aria-hidden="true" style="z-index: 2"></div>
+        <img class="sc-l" src="img/d581d737c434ef96eba23ca563733ea2.svg" alt="" style="z-index: 3; clip-path: inset(66.73% 0 0 0)">
+        <img class="sc-l" src="img/cf60509368dacc04a543324d9573f5b6.svg" alt="" style="z-index: 3; clip-path: inset(66.73% 0 0 0); opacity: {{ runkoK }}">
+        <img class="sc-l" src="img/1b23dd82e774f2a7b0f81238a4e032e5.svg" alt="" style="z-index: 4; clip-path: inset(66.73% 0 0 0)">
+        <img class="sc-l" src="img/579fb43b3b599afb75b3a9a04ea73493.svg" alt="" style="z-index: 5">
+        <img class="sc-l" src="img/f7f9d064db826426ccfa0db6e2d3c051.svg" alt="" style="z-index: 6; transform: {{ vesiT }}; opacity: {{ vesiN }}; transition-delay: 0s, {{ vesiDelay }}">
+        <img class="sc-l" src="img/e4723d2cdf2f4e3a201d13a82da3ddeb.svg" alt="" style="z-index: 6; transform: {{ vesiT }}; opacity: {{ vesiK }}; transition-delay: 0s, {{ vesiDelay }}">
+        <img class="sc-l" src="img/c881f5aa93305ed60e08f85054fd6a9a.svg" alt="" style="z-index: 6; transform: {{ vesiT }}; opacity: {{ vesiH }}">
+        <img class="sc-l" src="img/278e46dc9478c5046504b6b05c907244.svg" alt="" style="z-index: 7; transform: {{ kansiT }}; opacity: {{ kansiN }}">
+        <img class="sc-l" src="img/946c896ba2d9b505350381cdb68a844c.svg" alt="" style="z-index: 7; transform: {{ kansiT }}; opacity: {{ kansiK }}">
+        <sc-if value="{{ pesu }}" hint-placeholder-val="{{ false }}">
+          <div aria-hidden="true" style="position: absolute; inset: 0; z-index: 8">
+            <span class="sc-drop" style="left: 44%; top: 15%; animation-delay: 0s"></span>
+            <span class="sc-drop" style="left: 51%; top: 13%; animation-delay: .5s"></span>
+            <span class="sc-drop" style="left: 57%; top: 16%; animation-delay: 1s"></span>
+            <span class="sc-drop" style="left: 48%; top: 11%; animation-delay: 1.3s"></span>
+          </div>
+        </sc-if>
+        <svg class="sc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="z-index: 9; top: {{ nuoliY }}; opacity: {{ nuoliOp }}; transform: {{ nuoliK }}"><path d="M12 20V4M6 10l6-6 6 6"/></svg>
+      </div>
+      <div class="sc-top">
+        <p style="margin: 0; font-size: 14px; font-weight: 700">{{ laskuri }}</p>
+        <p aria-live="polite" style="margin: 0; font-size: 14px; font-weight: 600; color: #44546a">{{ tila }}</p>
+      </div>
+      <div class="sc-ctrl">
+        <button type="button" class="vs-tap sc-btn" aria-label="Edellinen vaihe" onClick="{{ edellinen }}" disabled="{{ ekaan }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <div class="sc-rail" role="group" aria-label="Vaiheet">
+          <sc-for list="{{ rail }}" as="r" hint-placeholder-count="7">
+            <button type="button" class="sc-railb" aria-label="{{ r.aria }}" aria-current="{{ r.nyt }}" onClick="{{ r.mene }}"><span style="background: {{ r.vari }}"></span></button>
+          </sc-for>
+        </div>
+        <button type="button" class="vs-tap sc-btn" aria-label="Seuraava vaihe" onClick="{{ seuraava }}" disabled="{{ vikaan }}" style="background: #001e42; color: #f6f5ed"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+
+    <ol class="sc-steps">
+      <sc-for list="{{ vaiheet }}" as="v" hint-placeholder-count="7">
+        <li class="sc-step" data-step="{{ v.k }}">
+          <p class="sc-num" aria-hidden="true" style="color: {{ v.numVari }}">{{ v.nro }}</p>
+          <h2 class="sc-h">{{ v.otsikko }}</h2>
+          <sc-if value="{{ v.tagi }}" hint-placeholder-val="{{ false }}"><p class="sc-tag">{{ v.tagi }}</p></sc-if>
+          <p class="sc-p">{{ v.teksti }}</p>
+          <sc-if value="{{ v.alt }}" hint-placeholder-val="{{ false }}"><p class="sc-alt"><strong>Ei kahvaa?</strong> {{ v.alt }}</p></sc-if>
+        </li>
+      </sc-for>
+    </ol>
+  </section>
+
+  <section class="sc-wrap" style="padding: 48px clamp(20px, 3vw, 40px) 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 40px; border-top: 2px solid #001e42">
+    <div id="haju" style="display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-size: 30px; line-height: 1.05; font-weight: 800; letter-spacing: -.02em">Haju jatkuu?</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.6">Vesilukko ei ole kunnolla paikallaan, tiiviste on vioittunut tai kaivo on yhä likainen. Paina vesilukko alas asti tai vaihda se uuteen.</p>
+      <a href="#" class="vs-tap vs-cta" style="display: flex; align-items: center; justify-content: space-between; min-height: 60px; padding: 0 20px; background: #001e42; color: #ffffff; font-size: 18px; font-weight: 700; text-decoration: none">Löydä varaosa jälleenmyyjältä<svg class="vs-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-size: 30px; line-height: 1.05; font-weight: 800; letter-spacing: -.02em">Kannen puhdistus</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.6">Puhdista kansi kummaltakin puolelta ja irrota hiukset. Teräskannesta pinttynyt lika lähtee kevyesti hankaamalla, kalkki kevyesti happamalla puhdistusaineella.</p>
+      <a href="tel:+358207464400" class="vs-link" style="font-size: 17px; align-self: flex-start">Tekninen asiakaspalvelu 020 746 4400</a>
+    </div>
+  </section>
+
+  <footer style="background: #001e42; color: #f6f5ed">
+    <div class="sc-wrap" style="padding: 32px clamp(20px, 3vw, 40px) 40px; display: flex; justify-content: space-between; align-items: center">
+      <p style="margin: 0; font-size: 15px; color: #bee2e9">Simply smart living</p>
+      <img src="img/9a27841f6c5d3063de282c1fb00814b5.svg" alt="Vieser" style="height: 22px; width: auto">
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":5170}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    let alku = 0;
+    try { const m = /vaihe-(\d)/.exec(window.location.hash || ''); if (m) alku = Math.min(7, Number(m[1])); } catch (e) {}
+    this.state = { s: alku };
+    this.root = null;
+    this.setRoot = (el) => { this.root = el; };
+    this.onScroll = this.onScroll.bind(this);
+    this.raf = 0;
+  }
+  componentDidMount() {
+    window.addEventListener('scroll', this.onScroll, { passive: true, capture: true });
+    window.addEventListener('resize', this.onScroll);
+    this.onScroll();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll, { capture: true });
+    window.removeEventListener('resize', this.onScroll);
+    if (this.raf) clearTimeout(this.raf);
+  }
+  scroller() {
+    let el = this.root ? this.root.parentElement : null;
+    while (el && el !== document.body && el !== document.documentElement) {
+      const o = getComputedStyle(el).overflowY;
+      if ((o === 'auto' || o === 'scroll') && el.scrollHeight > el.clientHeight + 40) return el;
+      el = el.parentElement;
+    }
+    const d = document.scrollingElement || document.documentElement;
+    return d.scrollHeight > window.innerHeight + 40 ? d : null;
+  }
+  onScroll() {
+    if (this.raf) return;
+    this.raf = setTimeout(() => {
+      this.raf = 0;
+      if (!this.root || !this.scroller()) return;
+      const wide = window.innerWidth >= 900;
+      const stage = this.root.querySelector('.sc-stage');
+      const sb = stage ? stage.getBoundingClientRect().bottom : 0;
+      const line = wide ? window.innerHeight * 0.55 : sb + (window.innerHeight - sb) * 0.5;
+      let s = 0;
+      this.root.querySelectorAll('[data-step]').forEach((el) => { if (el.getBoundingClientRect().top < line) s = Number(el.getAttribute('data-step')); });
+      if (s !== this.state.s) this.setState({ s });
+    }, 40);
+  }
+  mene(k) {
+    this.setState({ s: k });
+    if (!this.root || !this.scroller()) return;
+    const el = this.root.querySelector('[data-step="' + k + '"]');
+    if (!el) return;
+    const still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollIntoView({ block: 'start', behavior: still ? 'auto' : 'smooth' });
+  }
+  renderVals() {
+    const s = this.state.s;
+    // Korkeudet millimetreinä (z). Kerrokset on piirretty koottuun asentoon: vesilukko 60, kansi 154.
+    const H = 550;
+    const ty = (dz) => 'translateY(' + (-dz / H * 100).toFixed(2) + '%)';
+    const VAIHE = [
+      { tila: 'Koottuna lattiassa', kansi: 154, vesi: 60, vesiOn: false, kor: '' },
+      { tila: 'Kansi irti', kansi: 330, vesi: 60, vesiOn: false, kor: 'kansi', nuoli: ['ylos', 300] },
+      { tila: 'Vesilukko ylhäällä', kansi: 372, vesi: 250, vesiOn: true, kor: 'vesi', nuoli: ['ylos', 250], kansiHaalea: true },
+      { tila: 'Virtausohjuri kaivon rungossa', kansi: 372, vesi: 250, vesiOn: true, kor: 'runko', kansiHaalea: true },
+      { tila: 'Pesu ja huuhtelu', kansi: 372, vesi: 250, vesiOn: true, kor: '', pesu: true, kansiHaalea: true },
+      { tila: 'Harmaa huulitiiviste', kansi: 372, vesi: 250, vesiOn: true, kor: 'huuli', kansiHaalea: true },
+      { tila: 'Vesilukko paikallaan', kansi: 372, vesi: 60, vesiOn: false, kor: 'vesi', nuoli: ['alas', 200], kansiHaalea: true },
+      { tila: 'Kansi paikallaan, valmis', kansi: 154, vesi: 60, vesiOn: false, kor: 'kansi', nuoli: ['alas', 240] }
+    ];
+    const v = VAIHE[s];
+    const TEKSTIT = [
+      { otsikko: 'Nosta kansi pois', teksti: 'Nosta kansiritilä tai neliökansi pois kaivon päältä.' },
+      { otsikko: 'Nosta vesilukko kahvasta', teksti: 'Irrota vesilukko lattiakaivosta kahvasta nostamalla. Se voi olla tiukassa, jos sitä ei ole irrotettu pitkään aikaan.', alt: 'Tartu vesilukon alaosaan, taivuta alareunaa hieman lähtöputkea kohti ja nosta vesilukko vinossa asennossa ulos.' },
+      { otsikko: 'Irrota virtausohjuri', tagi: 'Vain jos kaivossa on sivuliitäntöjä', teksti: 'Sivuliitäntöjen virtausohjuri on irrotettavissa puhdistusta varten. Sivuliitännän tunnistaa toisesta putkesta kaivon kyljessä.' },
+      { otsikko: 'Pese ja huuhtele', teksti: 'Pese vesilukko ja lattiakaivo huolellisesti ja huuhtele.' },
+      { otsikko: 'Kostuta huulitiiviste', teksti: 'Tarkista, että vesilukon harmaa huulitiiviste on paikoillaan, ja kostuta se esimerkiksi saippuavedellä.' },
+      { otsikko: 'Paina vesilukko paikalleen', teksti: 'Laita virtausohjuri takaisin, jos irrotit sen. Kohdista vesilukko kaivoon oikeaan asentoon ja paina se alas asti.' },
+      { otsikko: 'Paina kansi paikalleen', teksti: 'Paina kansiritilä tai neliökansi takaisin paikoilleen. Valmis: seuraava puhdistus noin vuoden päästä.' }
+    ];
+    const nuoliY = v.nuoli ? (((-v.nuoli[1] + 440) / H) * 100 - 3).toFixed(1) + '%' : '30%';
+    return {
+      setRoot: this.setRoot,
+      kuvaus: 'Lattiakaivo leikkauskuvana lattian tasolla. ' + v.tila + '.',
+      laskuri: s === 0 ? 'Puhdistus 7 vaihetta' : 'Vaihe ' + s + ' / 7',
+      tila: v.tila,
+      kansiT: ty(v.kansi - 154),
+      kansiN: v.kor === 'kansi' ? 0 : (v.kansiHaalea ? 0.22 : 1),
+      kansiK: v.kor === 'kansi' ? 1 : 0,
+      vesiT: ty(v.vesi - 60),
+      vesiN: v.vesiOn && v.kor !== 'vesi' && v.kor !== 'huuli' ? 1 : 0,
+      vesiK: v.kor === 'vesi' && (v.vesiOn || s === 6) ? (v.vesiOn ? 1 : 0) : 0,
+      vesiH: v.kor === 'huuli' ? 1 : 0,
+      vesiDelay: v.vesiOn ? '0s' : '.45s',
+      runkoK: v.kor === 'runko' ? 1 : 0,
+      pesu: !!v.pesu,
+      nuoliOp: v.nuoli ? 1 : 0,
+      nuoliY: nuoliY,
+      nuoliK: v.nuoli && v.nuoli[0] === 'alas' ? 'rotate(180deg)' : 'none',
+      ekaan: s === 0,
+      vikaan: s === 7,
+      edellinen: () => this.mene(Math.max(0, s - 1)),
+      seuraava: () => this.mene(Math.min(7, s + 1)),
+      rail: TEKSTIT.map((t, i) => ({ aria: 'Vaihe ' + (i + 1) + ': ' + t.otsikko, nyt: s === i + 1 ? 'step' : 'false', vari: i + 1 <= s ? '#001e42' : 'rgba(0,30,66,.2)', mene: () => this.mene(i + 1) })),
+      vaiheet: TEKSTIT.map((t, i) => Object.assign({ tagi: '', alt: '' }, t, { k: String(i + 1), nro: String(i + 1).padStart(2, '0'), numVari: '#001e42' }))
+    };
+  }
+}
+</script>
+</body>
+</html>
