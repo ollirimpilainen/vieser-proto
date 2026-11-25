@@ -112,14 +112,17 @@ body{margin:0}
 
         <ul aria-label="{{ t.resultsLabel }}" style="margin: 0; padding: 0; list-style: none">
           <sc-for list="{{ tulokset }}" as="p" hint-placeholder-count="5">
-            <li class="th-row">
-              <div class="th-img pk"><img class="vs-prod" src="{{ p.img }}" alt=""></div>
-              <div style="min-width: 0; display: flex; flex-direction: column; gap: 6px">
-                <h3 style="margin: 0; font-size: 20px; line-height: 1.25; font-weight: 800; letter-spacing: -.01em"><a href="{{ p.link }}" class="th-name">{{ p.n }}</a></h3>
-                <sc-if value="{{ p.onRivi }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 15px; line-height: 1.5; color: #44546a">{{ p.rivi }}</p></sc-if>
-                <sc-if value="{{ p.onHuom }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 15px; line-height: 1.5; font-weight: 700">{{ p.huom }}</p></sc-if>
-              </div>
-              <p class="th-tun"><span style="color: #44546a">{{ p.tunL }}</span> {{ p.tun }}</p>
+            <li>
+              <a href="{{ p.link }}" class="th-row vs-row">
+                <span class="th-img pk"><img class="vs-prod" src="{{ p.img }}" alt=""></span>
+                <span style="min-width: 0; display: flex; flex-direction: column; gap: 6px">
+                  <h3 style="margin: 0; font-size: 20px; line-height: 1.25; font-weight: 800; letter-spacing: -.01em"><span class="th-name">{{ p.n }}</span></h3>
+                  <sc-if value="{{ p.onRivi }}" hint-placeholder-val="{{ true }}"><span style="font-size: 15px; line-height: 1.5; color: #44546a">{{ p.rivi }}</span></sc-if>
+                  <sc-if value="{{ p.onHuom }}" hint-placeholder-val="{{ false }}"><span style="font-size: 15px; line-height: 1.5; font-weight: 700">{{ p.huom }}</span></sc-if>
+                  <span class="th-tun"><span style="color: #44546a">{{ p.tunL }}</span> {{ p.tun }}</span>
+                </span>
+                <span class="th-go">{{ t.toProduct }}<svg class="vs-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </a>
             </li>
           </sc-for>
         </ul>
@@ -138,7 +141,7 @@ body{margin:0}
   </footer>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"maa":{"editor":"enum","options":["fi","se"],"default":"fi"},"$preview":{"width":1440,"height":2760}}'>
+<script type="text/x-dc" data-dc-script data-props='{"maa":{"editor":"enum","options":["fi","se"],"default":"fi"},"$preview":{"width":1440,"height":2780}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
@@ -158,7 +161,7 @@ class Component extends DCLogic {
       tabsLabel: 'Produkttyp', tabKaivo: 'Golvbrunnar', tabKansi: 'Galler',
       unit: { kaivo: ['golvbrunn', 'golvbrunnar'], kansi: ['galler', 'galler'] },
       filtersLabel: 'Filter', filters: 'Filtrera', clear: 'Rensa filter', clearShort: 'Rensa', activeLabel: 'Valda filter', remove: 'Ta bort filter',
-      resultsLabel: 'Produkter', tunL: 'RSK',
+      resultsLabel: 'Produkter', tunL: 'RSK', toProduct: 'Till produkten',
       rivi: function (h, v) { return 'Bygghöjd ' + h + ' mm, flöde ' + v + ' l/s'; },
       fitKaivo: function (n) { return 'Alla ' + n + ' galler passar alla Vieser golvbrunnar.'; }, fitKansi: function (n) { return 'Alla galler passar alla ' + n + ' golvbrunnar.'; }, showKansi: 'Visa galler', showKaivo: 'Visa golvbrunnar',
       emptyH: 'Inga produkter med de här filtren', emptyTxt: 'Ta bort ett filter eller rensa alla.', emptySug: function (v, n) { return 'Ta bort ' + v + ' (visa ' + n + ')'; },
@@ -190,7 +193,7 @@ class Component extends DCLogic {
       tabsLabel: 'Tuotetyyppi', tabKaivo: 'Kaivot', tabKansi: 'Kannet',
       unit: { kaivo: ['kaivo', 'kaivoa'], kansi: ['kansi', 'kantta'] },
       filtersLabel: 'Suodattimet', filters: 'Suodata', clear: 'Tyhjennä suodattimet', clearShort: 'Tyhjennä', activeLabel: 'Valitut rajaukset', remove: 'Poista rajaus',
-      resultsLabel: 'Tuotteet', tunL: 'LVI',
+      resultsLabel: 'Tuotteet', tunL: 'LVI', toProduct: 'Tuotesivulle',
       rivi: function (h, v) { return 'Korkeus ' + h + ' mm, virtaama ' + v + ' l/s'; },
       fitKaivo: function (n) { return 'Kaikki ' + n + ' kantta sopivat kaikkiin Vieser-kaivoihin.'; }, fitKansi: function (n) { return 'Kaikki kannet sopivat kaikkiin ' + n + ' kaivoon.'; }, showKansi: 'Näytä kannet', showKaivo: 'Näytä kaivot',
       emptyH: 'Näillä rajauksilla ei löydy tuotteita', emptyTxt: 'Poista jokin rajaus tai tyhjennä kaikki.', emptySug: function (v, n) { return 'Poista ' + v + ' (näytä ' + n + ')'; },
