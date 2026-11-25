@@ -49,9 +49,9 @@ body{margin:0}
             <img class="vs-prod vs-fadein" src="{{ kuva.src }}" alt="{{ kuva.alt }}" style="position: relative; width: {{ kuva.koko }}; height: {{ kuva.koko }}; object-fit: contain">
           </div>
           <p style="margin: 0; font-size: 14px; color: #44546a">Toimitetaan valusuojalla. Kansisto valitaan erikseen.</p>
-          <div role="group" aria-label="Kuvat" style="display: flex; gap: 24px">
+          <div role="group" aria-label="Kuvat" style="display: flex; gap: 12px">
             <sc-for list="{{ kuvat }}" as="k" hint-placeholder-count="3">
-              <button type="button" class="vs-tap" aria-pressed="{{ k.valittu }}" onClick="{{ k.valitse }}" style="min-height: 44px; padding: 0; background: transparent; border: 0; box-shadow: {{ k.alleviiva }}; font-size: 15px; font-weight: 700; color: {{ k.vari }}">{{ k.nimi }}</button>
+              <button type="button" class="vs-tap" aria-pressed="{{ k.valittu }}" aria-label="{{ k.nimi }}" title="{{ k.nimi }}" onClick="{{ k.valitse }}" style="width: 84px; height: 84px; flex: none; padding: 8px; box-sizing: border-box; background: #edebe3; border: 0; box-shadow: {{ k.reuna }}; display: flex; align-items: center; justify-content: center"><img class="vs-prod" src="{{ k.src }}" alt="" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block"></button>
             </sc-for>
           </div>
         </div>
@@ -282,8 +282,8 @@ class Component extends DCLogic {
     return {
       kuva: kuvat[s.kuva],
       kuvat: kuvat.map((k, i) => ({
-        nimi: k.nimi, valittu: s.kuva === i,
-        alleviiva: s.kuva === i ? 'inset 0 -3px 0 #993300' : 'none',
+        nimi: k.nimi, src: k.src, valittu: s.kuva === i,
+        reuna: s.kuva === i ? 'inset 0 0 0 2px #001e42' : 'inset 0 0 0 1px #dac8ae',
         vari: s.kuva === i ? '#001e42' : '#44546a',
         valitse: () => this.setState({ kuva: i })
       })),
