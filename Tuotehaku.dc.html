@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Lattiakaivot, tuotehaku</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="vieser.css">
+<link rel="stylesheet" href="tuotehaku.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div lang="{{ t.lang }}" style="width: 100%; box-sizing: border-box; background: #f6f5ed; color: #001e42; font-family: Figtree, 'Trebuchet MS', sans-serif; font-variant-numeric: tabular-nums">
+
+  <div style="background: #001e42; color: #f6f5ed">
+    <div style="max-width: 1360px; margin: 0 auto; box-sizing: border-box; padding: 0 clamp(16px, 3vw, 40px); min-height: 44px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px">
+      <div role="group" aria-label="{{ t.countryLabel }}" style="display: flex; align-items: center">
+        <sc-for list="{{ maat }}" as="m" hint-placeholder-count="2">
+          <button type="button" class="vs-tap th-country" aria-pressed="{{ m.valittu }}" onClick="{{ m.valitse }}" style="background: {{ m.bg }}; color: #f6f5ed; box-shadow: {{ m.viiva }}">{{ m.nimi }}</button>
+        </sc-for>
+      </div>
+      <div class="vs-desk" style="display: flex; gap: 24px">
+        <sc-for list="{{ t.top }}" as="x" hint-placeholder-count="3"><a href="#" style="color: #f6f5ed; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center">{{ x }}</a></sc-for>
+      </div>
+    </div>
+  </div>
+
+  <header style="border-bottom: 1px solid #dac8ae">
+    <div style="max-width: 1360px; margin: 0 auto; box-sizing: border-box; padding: 0 clamp(16px, 3vw, 40px); min-height: 72px; display: flex; align-items: center; gap: 12px">
+      <nav aria-label="{{ t.navLabel }}" class="vs-desk" style="flex: 1; display: flex; gap: 32px; font-size: 16px; font-weight: 700">
+        <sc-for list="{{ nav }}" as="x" hint-placeholder-count="4"><a href="#" aria-current="{{ x.nyt }}" style="color: #001e42; text-decoration: none; padding: 24px 0; box-shadow: {{ x.viiva }}">{{ x.nimi }}</a></sc-for>
+      </nav>
+      <div class="vs-mob" style="flex: 1"></div>
+      <img src="img/bbff548fc7da4a5ddc5f29400d6f3d65.svg" alt="{{ t.logoAlt }}" style="flex: none; height: 30px; width: auto; margin-left: 8px">
+    </div>
+  </header>
+
+  <main style="max-width: 1360px; margin: 0 auto; box-sizing: border-box; padding: clamp(20px, 3vw, 32px) clamp(16px, 3vw, 40px) clamp(56px, 7vw, 112px)">
+    <nav aria-label="{{ t.crumbLabel }}" style="font-size: 15px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: #44546a; margin: -12px 0 clamp(8px, 2vw, 24px)"><a href="#" style="color: #44546a; min-height: 44px; display: inline-flex; align-items: center">{{ t.crumb1 }}</a><span aria-hidden="true">/</span><span>{{ t.crumb2 }}</span></nav>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px 64px; padding-bottom: 32px">
+      <div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+        <h1 style="margin: 0; font-size: clamp(48px, 6vw, 92px); line-height: .9; font-weight: 900; letter-spacing: -.04em">{{ t.h1 }}</h1>
+        <p style="margin: 0; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; font-weight: 500; max-width: 34em">{{ lead }}</p>
+      </div>
+      <div style="flex: 0 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+        <label for="th-q" style="font-size: 15px; font-weight: 700">{{ t.searchLabel }}</label>
+        <div style="position: relative">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#001e42" stroke-width="2" aria-hidden="true" style="position: absolute; left: 16px; top: 17px"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          <input id="th-q" type="search" class="th-search" value="{{ q }}" onInput="{{ hae }}" placeholder="{{ t.searchPh }}" autocomplete="off">
+        </div>
+      </div>
+    </div>
+
+    <div role="tablist" aria-label="{{ t.tabsLabel }}" style="display: flex; gap: 36px; border-bottom: 1px solid #dac8ae; margin-bottom: 36px">
+      <sc-for list="{{ tabit }}" as="v" hint-placeholder-count="2">
+        <button type="button" role="tab" class="vs-tap th-tab" aria-selected="{{ v.valittu }}" onClick="{{ v.valitse }}" style="color: {{ v.vari }}; box-shadow: {{ v.viiva }}">{{ v.nimi }}<span style="font-size: 15px; font-weight: 600; color: #44546a">{{ v.maara }}</span></button>
+      </sc-for>
+    </div>
+
+    <div class="th-body">
+
+      <aside class="th-side th-filters" aria-label="{{ t.filtersLabel }}">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 12px; border-bottom: 2px solid #001e42">
+          <h2 style="margin: 0; font-size: 20px; font-weight: 800">{{ t.filters }}</h2>
+          <sc-if value="{{ onRajauksia }}" hint-placeholder-val="{{ false }}"><button type="button" class="vs-tap th-fit" onClick="{{ tyhjenna }}" style="font-size: 14px">{{ t.clearShort }}</button></sc-if>
+        </div>
+        <sc-for list="{{ fasetit }}" as="f" hint-placeholder-count="4">
+          <fieldset style="margin: 0; padding: 18px 0 14px; border: 0; border-bottom: 1px solid #dac8ae; min-width: 0">
+            <legend style="padding: 18px 0 6px; float: left; width: 100%; font-size: 14px; font-weight: 700; color: #44546a">{{ f.nimi }}</legend>
+            <div style="clear: both; display: flex; flex-direction: column">
+              <sc-for list="{{ f.opt }}" as="o" hint-placeholder-count="3">
+                <label class="th-opt" style="color: {{ o.vari }}">
+                  <input type="checkbox" class="vs-check" checked="{{ o.valittu }}" onChange="{{ o.vaihda }}">
+                  <span class="th-optl">{{ o.nimi }}</span>
+                  <span class="th-cnt" aria-label="{{ o.aria }}">{{ o.maara }}</span>
+                </label>
+              </sc-for>
+            </div>
+          </fieldset>
+        </sc-for>
+      </aside>
+
+      <section aria-labelledby="th-tulos" style="min-width: 0">
+        <div style="display: flex; flex-direction: column; gap: 14px; padding-bottom: 12px; border-bottom: 2px solid #001e42">
+          <h2 id="th-tulos" aria-live="polite" style="margin: 0; font-size: 20px; font-weight: 800">{{ tulosOtsikko }}</h2>
+          <sc-if value="{{ onSiruja }}" hint-placeholder-val="{{ false }}">
+            <div role="group" aria-label="{{ t.activeLabel }}" style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+              <sc-for list="{{ sirut }}" as="c" hint-placeholder-count="2">
+                <button type="button" class="vs-tap th-chip" onClick="{{ c.poista }}" aria-label="{{ c.aria }}">{{ c.nimi }}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+              </sc-for>
+            </div>
+          </sc-if>
+          <p style="margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0 12px; font-size: 15px; line-height: 1.5; color: #44546a"><span>{{ sopivuus.t }}</span><button type="button" class="vs-tap th-fit" onClick="{{ sopivuus.tee }}">{{ sopivuus.nappi }}</button></p>
+        </div>
+
+        <sc-if value="{{ eiTuloksia }}" hint-placeholder-val="{{ false }}">
+          <div style="padding: 48px 0; display: flex; flex-direction: column; gap: 16px; align-items: flex-start">
+            <p style="margin: 0; font-size: 28px; line-height: 1.15; font-weight: 800; letter-spacing: -.02em">{{ t.emptyH }}</p>
+            <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #44546a; max-width: 30em">{{ tyhjaTeksti }}</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px">
+              <sc-if value="{{ onEhdotus }}" hint-placeholder-val="{{ false }}"><button type="button" class="vs-tap vs-cta" onClick="{{ ehdotus.tee }}" style="min-height: 52px; padding: 0 22px; border: 0; background: #001e42; color: #ffffff; font-size: 16px; font-weight: 700">{{ ehdotus.nimi }}</button></sc-if>
+              <button type="button" class="vs-tap vs-sec" onClick="{{ tyhjenna }}" style="min-height: 52px; padding: 0 22px; border: 0; background: transparent; box-shadow: inset 0 0 0 2px #001e42; font-size: 16px; font-weight: 700">{{ t.clear }}</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <ul aria-label="{{ t.resultsLabel }}" style="margin: 0; padding: 0; list-style: none">
+          <sc-for list="{{ tulokset }}" as="p" hint-placeholder-count="5">
+            <li class="th-row">
+              <div class="th-img pk"><img class="vs-prod" src="{{ p.img }}" alt=""></div>
+              <div style="min-width: 0; display: flex; flex-direction: column; gap: 6px">
+                <h3 style="margin: 0; font-size: 20px; line-height: 1.25; font-weight: 800; letter-spacing: -.01em"><a href="{{ p.link }}" class="th-name">{{ p.n }}</a></h3>
+                <sc-if value="{{ p.onRivi }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 15px; line-height: 1.5; color: #44546a">{{ p.rivi }}</p></sc-if>
+                <sc-if value="{{ p.onHuom }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 15px; line-height: 1.5; font-weight: 700">{{ p.huom }}</p></sc-if>
+              </div>
+              <p class="th-tun"><span style="color: #44546a">{{ p.tunL }}</span> {{ p.tun }}</p>
+            </li>
+          </sc-for>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer style="background: #001e42; color: #f6f5ed">
+    <div style="max-width: 1360px; margin: 0 auto; box-sizing: border-box; padding: 40px clamp(16px, 3vw, 40px) 48px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: flex-end">
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <p style="margin: 0; font-size: 18px; font-weight: 700">{{ t.footH }}</p>
+        <p style="margin: 0; font-size: 15px; color: #bee2e9">{{ t.footAddr }}</p>
+      </div>
+      <img src="img/9a27841f6c5d3063de282c1fb00814b5.svg" alt="Vieser" style="height: 28px; width: auto">
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"maa":{"editor":"enum","options":["fi","se"],"default":"fi"},"$preview":{"width":1440,"height":2760}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const maa = props.maa === 'se' ? 'se' : 'fi';
+    this.state = { maa: maa, tab: 'kaivo', f: {}, q: '' };
+  }
+  data() {
+    if (!this._d) this._d = {"fi":[{"id":"52610","t":"kaivo","n":"Vieser One vaakakaivo DN75","img":"img/6e2a85e34ffccbc4c1a295009a6edc8a.jpg","tun":"3315956","ean":"6418685526106","suunta":"Vaaka","dn":"DN75","sivu":"Ei","h":145,"v":"1,6","valu":"","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":2,"EPD":1},"lukko":"One (52701)","huom":null,"kansiMukana":false,"tulkinta":false,"link":"Tuote.dc.html"},{"id":"52611","t":"kaivo","n":"Vieser One vaakakaivo DN75 3×32/40","img":"img/d6c11f2f5827a15ac97f8cf4507b791b.jpg","tun":"3315957","ean":"6418685526113","suunta":"Vaaka","dn":"DN75","sivu":"3 × 32/40","h":145,"v":"1,6","valu":"","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":2,"EPD":1},"lukko":"One (52701)","huom":null,"kansiMukana":false,"tulkinta":false,"link":"#"},{"id":"52601","t":"kaivo","n":"Vieser One vaakakaivo DN75 3×32/40 valutuilla","img":"img/dcd12eac1b3204a4b85c81a591d4ba4b.jpg","tun":"3315931","ean":"6418685526014","suunta":"Vaaka","dn":"DN75","sivu":"3 × 32/40","h":145,"v":"1,6","valu":"Valutuet mukana","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":2,"EPD":1},"lukko":"One (52701)","huom":null,"kansiMukana":false,"tulkinta":false,"link":"#"},{"id":"52612","t":"kaivo","n":"Vieser One vaakakaivo DN50 3×32/40","img":"img/42c1874e356cc0347b77ed18f8d4fbd2.jpg","tun":"3315958","ean":"6418685526120","suunta":"Vaaka","dn":"DN50","sivu":"3 × 32/40","h":145,"v":"1,2","valu":"","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":2,"EPD":1},"lukko":"One (52701)","huom":null,"kansiMukana":false,"tulkinta":false,"link":"#"},{"id":"52600","t":"kaivo","n":"Vieser One vaakakaivo DN50 3×32/40 valutuilla","img":"img/1295f88bc1229c9c4352ef1a2d750f6c.jpg","tun":"3315930","ean":"6418685526007","suunta":"Vaaka","dn":"DN50","sivu":"3 × 32/40","h":145,"v":"1,2","valu":"Valutuet mukana","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":2,"EPD":1},"lukko":"One (52701)","huom":null,"kansiMukana":false,"tulkinta":false,"link":"#"},{"id":"6004512","t":"kaivo","n":"Vieser One vaakakaivo DN50 1×32 extra matala","img":"img/3a6b91b67bf48f2bed55cfccf5d48d71.jpg","tun":"3317307","ean":"6430066742325","suunta":"Vaaka","dn":"DN50","sivu":"1 × 32","h":69,"v":"1,2","valu":"","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":3,"EPD":1},"lukko":"kalvovesilukko (6005861)","huom":null,"kansiMukana":false,"tulkinta":false,"link":"#"},{"id":"6004513","t":"kaivo","n":"Vieser One vaakakaivo DN50 1×32 extra matala valutuilla","img":"img/a3b101795b4b7889703f2264587acd90.jpg","tun":"3317308","ean":"6430066742332","suunta":"Vaaka","dn":"DN50","sivu":"1 × 32","h":69,"v":"1,2","valu":"Valutuet mukana","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":3,"EPD":1},"lukko":"kalvovesilukko (6005861)","huom":null,"kansiMukana":false,"tulkinta":false,"link":"#"},{"id":"52615","t":"kaivo","n":"Vieser matala vaakakaivo DN75","img":"img/084272921953a59f4229ad217aad7e25.jpg","tun":"3315972","ean":"6418685526151","suunta":"Vaaka","dn":"DN75","sivu":"Ei","h":110,"v":"1,5","valu":"","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":2,"EPD":1},"lukko":"matalan kaivon malli (51908)","huom":null,"kansiMukana":false,"tulkinta":false,"link":"#"},{"id":"52614","t":"kaivo","n":"Vieser matala vaakakaivo DN50","img":"img/0e3641540e4bbe2e31479251e815ae54.jpg","tun":"3315971","ean":"6418685526144","suunta":"Vaaka","dn":"DN50","sivu":"Ei","h":110,"v":"1,2","valu":"","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":2,"EPD":1},"lukko":"matalan kaivon malli (51908)","huom":null,"kansiMukana":false,"tulkinta":false,"link":"#"},{"id":"52631","t":"kaivo","n":"Vieser One pystykaivo DN75","img":"img/15ab14188ceed76c32485173d1fd5085.jpg","tun":"3315979","ean":"6418685526311","suunta":"Pysty","dn":"DN75","sivu":"Ei","h":252,"v":"2,3","valu":"","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":2,"EPD":1},"lukko":"One (52701)","huom":null,"kansiMukana":false,"tulkinta":false,"link":"#"},{"id":"52630","t":"kaivo","n":"Vieser One pystykaivo DN75 3×32/40","img":"img/3ab80510eaddc0171e1223f97ade0d60.jpg","tun":"3315935","ean":"6418685526304","suunta":"Pysty","dn":"DN75","sivu":"3 × 32/40","h":252,"v":"2,3","valu":"","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":2,"EPD":1},"lukko":"One (52701)","huom":null,"kansiMukana":false,"tulkinta":false,"link":"#"},{"id":"51125","t":"kaivo","n":"Vieser pystykaivo DN50","img":"img/4b0c09daabb8faec44cd5c9a738c48fc.jpg","tun":"3312350","ean":"6418685511256","suunta":"Pysty","dn":"DN50","sivu":"Ei","h":115,"v":"1,3","valu":"","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":2,"EPD":1},"lukko":null,"huom":"Pakkauksessa pyöreä kansi","kansiMukana":true,"tulkinta":false,"link":"#"},{"id":"6004308","t":"kaivo","n":"Vieser One kulmakaivo 45° DN75 3×32/40","img":"img/6bfa1ca11836b74f03d53daa35aca5ca.jpg","tun":"3317303","ean":"6430066742172","suunta":"45° kulma","dn":"DN75","sivu":"3 × 32/40","h":145,"v":"1,4","valu":"","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":2,"EPD":1},"lukko":"One (52701)","huom":null,"kansiMukana":false,"tulkinta":false,"link":"#"},{"id":"52641","t":"kaivo","n":"Vieser One kuivakaivo DN32/40","img":"img/60ee7aed67dfa3acca401a7064e8a051.jpg","tun":"3315942","ean":"6418685526410","suunta":"Vaaka","dn":"DN32/40","sivu":"Ei","h":69,"v":"0,6","valu":"","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":1,"Hyv":2,"EPD":1},"lukko":null,"huom":"Ei vesilukkoa, ei suihkun alle","kansiMukana":false,"tulkinta":true,"link":"#"},{"id":"52640","t":"kaivo","n":"Vieser One kuivakaivo DN32/40 valutuilla","img":"img/64eaaf23cd702284c00567996f4f310f.jpg","tun":"3315936","ean":"6418685526403","suunta":"Vaaka","dn":"DN32/40","sivu":"Ei","h":69,"v":"0,6","valu":"Valutuet mukana","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":1,"Hyv":2,"EPD":1},"lukko":null,"huom":"Ei vesilukkoa, ei suihkun alle","kansiMukana":false,"tulkinta":true,"link":"#"},{"id":"51254","t":"kansi","n":"Vieser Classic kansi muovikehyksellä 160×160","img":"img/2827be52311064bb95691c04769987da.jpg","tun":"3316255","ean":"6418685512543","malli":"Classic","kehys":"Muovikehys","koko":"160×160","vari":"RST","lisa":"","kesto":null,"docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"EPD":1},"huom":null,"link":"#"},{"id":"51256","t":"kansi","n":"Vieser Classic kansi muovikehyksellä 160×160 Ø32","img":"img/85dd763fc873176246d83d882d40e582.jpg","tun":"3316153","ean":"6418685512567","malli":"Classic","kehys":"Muovikehys","koko":"160×160","vari":"RST","lisa":"Ø32 läpivienti","kesto":null,"docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"EPD":1},"huom":null,"link":"#"},{"id":"51224","t":"kansi","n":"Vieser Classic+ kansi muovikehyksellä 197×197","img":"img/6534303443be2e3445075bb164606eb8.jpg","tun":"3316333","ean":"6418685512246","malli":"Classic+","kehys":"Muovikehys","koko":"197×197","vari":"RST","lisa":"","kesto":"300 kg","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":1,"EPD":1},"huom":null,"link":"#"},{"id":"51229","t":"kansi","n":"Vieser Classic+ kansi muovikehyksellä 197×197 Ø40","img":"img/3f734a04a9b6ba48ab51c6fc2cefb39e.jpg","tun":"3316193","ean":"6418685512291","malli":"Classic+","kehys":"Muovikehys","koko":"197×197","vari":"RST","lisa":"Ø40 läpivienti","kesto":null,"docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"EPD":1},"huom":null,"link":"#"},{"id":"6005480","t":"kansi","n":"Vieser Classic+ musta kansi muovikehyksellä 197×197","img":"img/89331dd688b115469c55c318b313a924.jpg","tun":"3317314","ean":"6430066742882","malli":"Classic+","kehys":"Muovikehys","koko":"197×197","vari":"Musta","lisa":"","kesto":"300 kg","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":1,"EPD":1},"huom":null,"link":"#"},{"id":"6007707","t":"kansi","n":"Vieser Classic+ musta kansi muovikehyksellä 197×197 Ø40","img":"img/4470deca2cff1b9d9e719bc30eccc6ed.jpg","tun":"3317355","ean":"6430066744268","malli":"Classic+","kehys":"Muovikehys","koko":"197×197","vari":"Musta","lisa":"Ø40 läpivienti","kesto":null,"docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"EPD":1},"huom":null,"link":"#"},{"id":"51292","t":"kansi","n":"Vieser Classic+ kansi säädettävällä teräskehyksellä 197×197","img":"img/11b7db8403075a310f62b7949ebea893.jpg","tun":"3315955","ean":"6418685512925","malli":"Classic+","kehys":"Säädettävä teräskehys","koko":"197×197","vari":"RST","lisa":"","kesto":"300 kg","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":1,"EPD":1},"huom":null,"link":"#"},{"id":"51294","t":"kansi","n":"Vieser Classic+ kansi säädettävällä teräskehyksellä 197×197 Ø40","img":"img/6fb0ee3fc3fa4165c69e06606c99050b.jpg","tun":"3315978","ean":"6430066741328","malli":"Classic+","kehys":"Säädettävä teräskehys","koko":"197×197","vari":"RST","lisa":"Ø40 läpivienti","kesto":null,"docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"EPD":1},"huom":null,"link":"#"},{"id":"6009592","t":"kansi","n":"Vieser Classic+ kansi säädettävällä teräskehyksellä 197×197 U läpivienti","img":"img/a1343844b4983a3b4251bfd6a64caeb1.jpg","tun":"3317386","ean":"6430066744749","malli":"Classic+","kehys":"Säädettävä teräskehys","koko":"197×197","vari":"RST","lisa":"U-läpivienti","kesto":null,"docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2},"huom":null,"link":"#"},{"id":"6008826","t":"kansi","n":"Vieser Classic+ kansi säädettävällä teräskehyksellä 197×197 lukittava","img":"img/79d7c77123051f6501d7be86009cd3ff.jpg","tun":"3317361","ean":"6430066744404","malli":"Classic+","kehys":"Säädettävä teräskehys","koko":"197×197","vari":"RST","lisa":"Lukittava","kesto":null,"docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2},"huom":null,"link":"#"},{"id":"6007765","t":"kansi","n":"Vieser Classic+ musta kansi säädettävällä teräskehyksellä 197×197","img":"img/64280ca1dc1f4ef1be3119c9ec415293.jpg","tun":"3317356","ean":"6430066744275","malli":"Classic+","kehys":"Säädettävä teräskehys","koko":"197×197","vari":"Musta","lisa":"","kesto":"300 kg","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":1,"EPD":1},"huom":null,"link":"#"},{"id":"6009887","t":"kansi","n":"Vieser Classic+ musta kansi säädettävällä teräskehyksellä 197×197 Ø40","img":"img/0b779186fc35b950a5ea95c6214438fa.jpg","tun":"3317390","ean":"6430066744800","malli":"Classic+","kehys":"Säädettävä teräskehys","koko":"197×197","vari":"Musta","lisa":"Ø40 läpivienti","kesto":null,"docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2},"huom":null,"link":"#"},{"id":"6005478","t":"kansi","n":"Vieser Link kansi muovikehyksellä 197×197","img":"img/f37c3aab5676bcdeeb327d4fbb41d350.jpg","tun":"3317312","ean":"6430066742820","malli":"Link","kehys":"Muovikehys","koko":"197×197","vari":"RST","lisa":"","kesto":"300 kg","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":1,"EPD":1},"huom":null,"link":"#"},{"id":"6005481","t":"kansi","n":"Vieser Link musta kansi muovikehyksellä 197×197","img":"img/bfd99c2dbc9f0cf1278a830787963009.jpg","tun":"3317315","ean":"6430066742912","malli":"Link","kehys":"Muovikehys","koko":"197×197","vari":"Musta","lisa":"","kesto":"300 kg","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":1,"EPD":1},"huom":null,"link":"#"},{"id":"6005482","t":"kansi","n":"Vieser Link kansi säädettävällä teräskehyksellä 197×197","img":"img/5480513c81f2851857b3e278b116b8b7.jpg","tun":"3317316","ean":"6430066742943","malli":"Link","kehys":"Säädettävä teräskehys","koko":"197×197","vari":"RST","lisa":"","kesto":"300 kg","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":1,"EPD":1},"huom":null,"link":"#"},{"id":"51291","t":"kansi","n":"Vieser Modern kansi säädettävällä teräskehyksellä 197×197","img":"img/81db657a3b5e2f8a10529331d134fd3a.jpg","tun":"3315954","ean":"6418685512918","malli":"Modern","kehys":"Säädettävä teräskehys","koko":"197×197","vari":"RST","lisa":"","kesto":"300 kg","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":1,"EPD":1},"huom":null,"link":"#"},{"id":"6005479","t":"kansi","n":"Vieser Grid kansi muovikehyksellä 197×197","img":"img/49fa8d66b96197b3bfa4df54810afb03.jpg","tun":"3317313","ean":"6430066742851","malli":"Grid","kehys":"Muovikehys","koko":"197×197","vari":"RST","lisa":"","kesto":"300 kg","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":1,"EPD":1},"huom":null,"link":"#"},{"id":"51273","t":"kansi","n":"Vieser pyöreä kansi Ø150","img":"img/e91745ceb025b79cb9b1bf34cb844b07.jpg","tun":"3315902","ean":"6418685512734","malli":"Pyöreä","kehys":"Ei kehystä","koko":"Ø150","vari":"RST","lisa":"","kesto":"300 kg","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"EPD":1},"huom":"Laattalattiassa valukorotusrengas (51206)","link":"#"},{"id":"51275","t":"kansi","n":"Vieser pyöreä kansi Ø150 Ø32","img":"img/4061d7200cd58cfce2cffc696c16b7ab.jpg","tun":"3315922","ean":"6418685512758","malli":"Pyöreä","kehys":"Ei kehystä","koko":"Ø150","vari":"RST","lisa":"Ø32 läpivienti","kesto":null,"docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"EPD":1},"huom":"Laattalattiassa valukorotusrengas (51206)","link":"#"},{"id":"51274","t":"kansi","n":"Vieser pyöreä kansi Ø150 lukittava","img":"img/31277a661c25dbce398d82ef648c65ae.jpg","tun":"3315912","ean":"6418685512741","malli":"Pyöreä","kehys":"Ei kehystä","koko":"Ø150","vari":"RST","lisa":"Lukittava","kesto":"300 kg","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"EPD":1},"huom":"Laattalattiassa valukorotusrengas (51206)","link":"#"},{"id":"51906","t":"kansi","n":"Vieser pyöreä muovikansi Ø150","img":"img/f3c3b3681e3c5b35b56754ac2c6afc5c.jpg","tun":"3316324","ean":"6418685519061","malli":"Pyöreä","kehys":"Ei kehystä","koko":"Ø150","vari":"Muovi","lisa":"","kesto":null,"docs":{"Tuotekortti":1,"Ohje":1},"huom":null,"link":"#"},{"id":"6004547","t":"kansi","n":"Vieser Flip laatoitettava kansi 146×146","img":"img/9f31f592388d25cde5177bb4abb897c0.jpg","tun":"3317309","ean":"6430066742424","malli":"Flip","kehys":"Muovikehys","koko":"146×146","vari":"RST","lisa":"Laatoitettava","kesto":"300 kg","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":1,"EPD":1},"huom":null,"link":"#"}],"se":[{"id":"52655","t":"kaivo","n":"Vieser One horisontell golvbrunn DN75","img":"img/6e2a85e34ffccbc4c1a295009a6edc8a.jpg","tun":"7110796","ean":"6418685526557","suunta":"Horisontell","dn":"DN75","sivu":"Inga","h":145,"v":"1,6","valu":"","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":2,"EPD":1},"lukko":"One (52701)","huom":null,"kansiMukana":false,"link":"#"},{"id":"52652","t":"kaivo","n":"Vieser One horisontell golvbrunn DN75 med stödben","img":"img/4baa272a79f65cb86d66d1b9155d0895.jpg","tun":"7110795","ean":"6418685526526","suunta":"Horisontell","dn":"DN75","sivu":"Inga","h":145,"v":"1,6","valu":"Stödben ingår","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":2,"EPD":1},"lukko":"One (52701)","huom":null,"kansiMukana":false,"link":"#"},{"id":"6004531","t":"kaivo","n":"Vieser One golvbrunn DN50 1×32 extra låg","img":"img/3a6b91b67bf48f2bed55cfccf5d48d71.jpg","tun":"7110841","ean":"6430066742349","suunta":"Horisontell","dn":"DN50","sivu":"1 × 32","h":69,"v":"1,2","valu":"","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":1,"EPD":1},"lukko":"membranvattenlås (6005861)","huom":null,"kansiMukana":false,"link":"#"},{"id":"52666","t":"kaivo","n":"Vieser One vertikal golvbrunn DN75","img":"img/fb2f78f7576568320bc17065375d838b.jpg","tun":"7103775","ean":"6418685526663","suunta":"Vertikal","dn":"DN75","sivu":"Inga","h":252,"v":"2,3","valu":"","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":2,"EPD":1},"lukko":"One (52701)","huom":null,"kansiMukana":false,"link":"#"},{"id":"52683","t":"kaivo","n":"Vieser låg golvbrunn DN75","img":"img/b32fd245a4c98e0ece91ba81355b0a91.jpg","tun":"7110800","ean":"6418685526830","suunta":"Horisontell","dn":"DN75","sivu":"Inga","h":110,"v":"1,5","valu":"","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":2,"EPD":1},"lukko":"för låg golvbrunn (51908)","huom":null,"kansiMukana":false,"link":"#"},{"id":"52684","t":"kaivo","n":"Vieser låg golvbrunn DN50","img":"img/a1d7bdc9667a4b5e6add33eca0dfd126.jpg","tun":"7110799","ean":"6418685526847","suunta":"Horisontell","dn":"DN50","sivu":"Inga","h":110,"v":"1,2","valu":"","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2,"Hyv":2,"EPD":1},"lukko":"för låg golvbrunn (51908)","huom":null,"kansiMukana":false,"link":"#"},{"id":"51292","t":"kansi","n":"Vieser Classic+ galler med justerbar stålram 197×197","img":"img/11b7db8403075a310f62b7949ebea893.jpg","tun":"7129520","ean":"6418685512925","malli":"Classic+","kehys":"Justerbar stålram","koko":"197×197","vari":"Rostfritt","lisa":"","kesto":"300 kg","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":3,"EPD":1},"huom":null,"link":"#"},{"id":"51294","t":"kansi","n":"Vieser Classic+ galler med justerbar stålram 197×197 Ø40","img":"img/6fb0ee3fc3fa4165c69e06606c99050b.jpg","tun":"7130127","ean":"6430066741328","malli":"Classic+","kehys":"Justerbar stålram","koko":"197×197","vari":"Rostfritt","lisa":"Ø40 urtag","kesto":null,"docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":3,"EPD":1},"huom":null,"link":"#"},{"id":"6009592","t":"kansi","n":"Vieser Classic+ galler med justerbar stålram 197×197 med U urtag","img":"img/a1343844b4983a3b4251bfd6a64caeb1.jpg","tun":"7130250","ean":"6430066744749","malli":"Classic+","kehys":"Justerbar stålram","koko":"197×197","vari":"Rostfritt","lisa":"U-urtag","kesto":null,"docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":3},"huom":null,"link":"#"},{"id":"6008826","t":"kansi","n":"Vieser Classic+ galler med justerbar stålram 197×197 låsbar","img":"img/79d7c77123051f6501d7be86009cd3ff.jpg","tun":"7130170","ean":"6430066744404","malli":"Classic+","kehys":"Justerbar stålram","koko":"197×197","vari":"Rostfritt","lisa":"Låsbar","kesto":"300 kg","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":2},"huom":null,"link":"#"},{"id":"6007765","t":"kansi","n":"Vieser Classic+ svart galler med justerbar stålram 197×197","img":"img/64280ca1dc1f4ef1be3119c9ec415293.jpg","tun":"7130083","ean":"6430066744275","malli":"Classic+","kehys":"Justerbar stålram","koko":"197×197","vari":"Svart","lisa":"","kesto":"300 kg","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":3,"EPD":1},"huom":null,"link":"#"},{"id":"6009887","t":"kansi","n":"Vieser Classic+ svart galler med justerbar stålram 197×197 Ø40","img":"img/0b779186fc35b950a5ea95c6214438fa.jpg","tun":"7130266","ean":"6430066744800","malli":"Classic+","kehys":"Justerbar stålram","koko":"197×197","vari":"Svart","lisa":"Ø40 urtag","kesto":null,"docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":3},"huom":null,"link":"#"},{"id":"6005482","t":"kansi","n":"Vieser Link galler med justerbar stålram 197×197","img":"img/5480513c81f2851857b3e278b116b8b7.jpg","tun":"7129897","ean":"6430066742943","malli":"Link","kehys":"Justerbar stålram","koko":"197×197","vari":"Rostfritt","lisa":"","kesto":"300 kg","docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":3,"EPD":1},"huom":null,"link":"#"},{"id":"51291","t":"kansi","n":"Vieser Modern galler med justerbar stålram 197×197","img":"img/81db657a3b5e2f8a10529331d134fd3a.jpg","tun":"7129519","ean":"6418685512918","malli":"Modern","kehys":"Justerbar stålram","koko":"197×197","vari":"Rostfritt","lisa":"","kesto":null,"docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":3,"EPD":1},"huom":null,"link":"#"},{"id":"51273","t":"kansi","n":"Vieser runt galler Ø150","img":"img/e91745ceb025b79cb9b1bf34cb844b07.jpg","tun":"7114108","ean":"6418685512734","malli":"Rund","kehys":"Utan ram","koko":"Ø150","vari":"Rostfritt","lisa":"","kesto":null,"docs":{"Tuotekortti":1,"Mittakuva":2,"Ohje":3,"EPD":1},"huom":"Klinkergolv: distansring (51206)","link":"#"},{"id":"51906","t":"kansi","n":"Vieser runt plastgaller Ø150","img":"img/f3c3b3681e3c5b35b56754ac2c6afc5c.jpg","tun":"7114330","ean":"6418685519061","malli":"Rund","kehys":"Utan ram","koko":"Ø150","vari":"Plast","lisa":"","kesto":null,"docs":{"Tuotekortti":1,"Ohje":2},"huom":"Klinkergolv: distansring (51206)","link":"#"}]};
+    return this._d;
+  }
+  tekstit(maa) {
+    if (maa === 'se') return {
+      lang: 'sv', countryLabel: 'Land och språk', top: ['Återförsäljare', 'Showrooms', 'Kontakta oss'],
+      navLabel: 'Huvudmeny', nav: ['Produkter', 'Planering och montering', 'Kunskapsbank', 'Materialbank'],
+      logoAlt: 'Vieser, till startsidan', crumbLabel: 'Brödsmulor', crumb1: 'Produkter', crumb2: 'Golvbrunnar och tillbehör',
+      h1: 'Golvbrunnar', searchLabel: 'Sök bland produkterna', searchPh: 'Namn, RSK-nummer eller EAN',
+      tabsLabel: 'Produkttyp', tabKaivo: 'Golvbrunnar', tabKansi: 'Galler',
+      unit: { kaivo: ['golvbrunn', 'golvbrunnar'], kansi: ['galler', 'galler'] },
+      filtersLabel: 'Filter', filters: 'Filtrera', clear: 'Rensa filter', clearShort: 'Rensa', activeLabel: 'Valda filter', remove: 'Ta bort filter',
+      resultsLabel: 'Produkter', tunL: 'RSK',
+      rivi: function (h, v) { return 'Bygghöjd ' + h + ' mm, flöde ' + v + ' l/s'; },
+      fitKaivo: function (n) { return 'Alla ' + n + ' galler passar alla Vieser golvbrunnar.'; }, fitKansi: function (n) { return 'Alla galler passar alla ' + n + ' golvbrunnar.'; }, showKansi: 'Visa galler', showKaivo: 'Visa golvbrunnar',
+      emptyH: 'Inga produkter med de här filtren', emptyTxt: 'Ta bort ett filter eller rensa alla.', emptySug: function (v, n) { return 'Ta bort ' + v + ' (visa ' + n + ')'; },
+      lead: function (a, b) { return a + ' golvbrunnar och ' + b + ' galler. Filtrera på tekniska data och se direkt vilka galler som passar.'; },
+      count: function (n, u) { return n + ' ' + (n === 1 ? u[0] : u[1]); },
+      footH: 'Teknisk kundservice', footAddr: 'Vieser Oy, Keskustie 23, 61850 Kauhajoki, Finland',
+      facets: {
+        kaivo: [
+          { k: 'suunta', l: 'Utloppsriktning', o: ['Horisontell', 'Vertikal'] },
+          { k: 'dn', l: 'Anslutning', o: ['DN50', 'DN75'] },
+          { k: 'sivu', l: 'Sidoinlopp', o: ['Inga', '1 × 32'], lab: { 'Inga': 'Inga sidoinlopp' } },
+          { k: 'h', l: 'Bygghöjd', o: ['69', '110', '145', '252'], suf: ' mm' },
+          { k: 'valu', l: 'Montering', o: ['Stödben ingår'] }
+        ],
+        kansi: [
+          { k: 'malli', l: 'Modell', o: ['Classic+', 'Link', 'Modern', 'Rund'] },
+          { k: 'kehys', l: 'Ram', o: ['Justerbar stålram', 'Utan ram'] },
+          { k: 'koko', l: 'Storlek', o: ['197×197', 'Ø150'], suf: ' mm' },
+          { k: 'vari', l: 'Färg', o: ['Rostfritt', 'Svart', 'Plast'], lab: { 'Rostfritt': 'Rostfritt stål' } },
+          { k: 'lisa', l: 'Tillval', o: ['Ø40 urtag', 'U-urtag', 'Låsbar'] }
+        ]
+      }
+    };
+    return {
+      lang: 'fi', countryLabel: 'Maa ja kieli', top: ['Jälleenmyyjät', 'Tuotekoulutukset', 'Ota yhteyttä'],
+      navLabel: 'Päävalikko', nav: ['Tuotteet', 'Suunnittelu ja asennus', 'Osaamispankki', 'Materiaalipankki'],
+      logoAlt: 'Vieser, etusivulle', crumbLabel: 'Murupolku', crumb1: 'Tuotteet', crumb2: 'Lattiakaivot ja tarvikkeet',
+      h1: 'Lattiakaivot', searchLabel: 'Hae tuotteista', searchPh: 'Nimi, LVI-numero tai EAN',
+      tabsLabel: 'Tuotetyyppi', tabKaivo: 'Kaivot', tabKansi: 'Kannet',
+      unit: { kaivo: ['kaivo', 'kaivoa'], kansi: ['kansi', 'kantta'] },
+      filtersLabel: 'Suodattimet', filters: 'Suodata', clear: 'Tyhjennä suodattimet', clearShort: 'Tyhjennä', activeLabel: 'Valitut rajaukset', remove: 'Poista rajaus',
+      resultsLabel: 'Tuotteet', tunL: 'LVI',
+      rivi: function (h, v) { return 'Korkeus ' + h + ' mm, virtaama ' + v + ' l/s'; },
+      fitKaivo: function (n) { return 'Kaikki ' + n + ' kantta sopivat kaikkiin Vieser-kaivoihin.'; }, fitKansi: function (n) { return 'Kaikki kannet sopivat kaikkiin ' + n + ' kaivoon.'; }, showKansi: 'Näytä kannet', showKaivo: 'Näytä kaivot',
+      emptyH: 'Näillä rajauksilla ei löydy tuotteita', emptyTxt: 'Poista jokin rajaus tai tyhjennä kaikki.', emptySug: function (v, n) { return 'Poista ' + v + ' (näytä ' + n + ')'; },
+      lead: function (a, b) { return a + ' kaivoa ja ' + b + ' kantta. Rajaa teknisten tietojen mukaan ja näe heti, mitkä kannet sopivat.'; },
+      count: function (n, u) { return n + ' ' + (n === 1 ? u[0] : u[1]); },
+      footH: 'Tekninen asiakaspalvelu 020 746 4400', footAddr: 'Vieser Oy, Keskustie 23, 61850 Kauhajoki',
+      facets: {
+        kaivo: [
+          { k: 'suunta', l: 'Lähtösuunta', o: ['Vaaka', 'Pysty', '45° kulma'] },
+          { k: 'dn', l: 'Liitäntäkoko', o: ['DN32/40', 'DN50', 'DN75'] },
+          { k: 'sivu', l: 'Sivuliitännät', o: ['Ei', '1 × 32', '3 × 32/40'], lab: { 'Ei': 'Ei sivuliitäntöjä' } },
+          { k: 'h', l: 'Rakennekorkeus', o: ['69', '110', '115', '145', '252'], suf: ' mm' },
+          { k: 'valu', l: 'Asennus', o: ['Valutuet mukana'] }
+        ],
+        kansi: [
+          { k: 'malli', l: 'Kansimalli', o: ['Classic', 'Classic+', 'Link', 'Modern', 'Grid', 'Pyöreä', 'Flip'] },
+          { k: 'kehys', l: 'Kehys', o: ['Muovikehys', 'Säädettävä teräskehys', 'Ei kehystä'] },
+          { k: 'koko', l: 'Koko', o: ['197×197', '160×160', 'Ø150', '146×146'], suf: ' mm' },
+          { k: 'vari', l: 'Väri', o: ['RST', 'Musta', 'Muovi'], lab: { 'RST': 'Ruostumaton teräs' } },
+          { k: 'lisa', l: 'Lisäominaisuus', o: ['Ø32 läpivienti', 'Ø40 läpivienti', 'U-läpivienti', 'Lukittava', 'Laatoitettava'] }
+        ]
+      }
+    };
+  }
+  vaihdaMaa(m) {
+    if (m === this.state.maa) return;
+    this.setState({ maa: m, tab: 'kaivo', f: {}, q: '' });
+  }
+  renderVals() {
+    const s = this.state;
+    const maa = s.maa;
+    const T = this.tekstit(maa);
+    const D = this.data()[maa];
+    const tab = s.tab;
+    const facets = T.facets[tab];
+    const all = D.filter(p => p.t === tab);
+    const nKaivo = D.filter(p => p.t === 'kaivo').length;
+    const nKansi = D.filter(p => p.t === 'kansi').length;
+    const q = (s.q || '').trim().toLowerCase().replace(/\s+/g, ' ');
+    const qd = q.replace(/\s/g, '');
+    const hakuOk = p => !q || p.n.toLowerCase().indexOf(q) >= 0 || (qd && (p.tun.indexOf(qd) >= 0 || p.ean.indexOf(qd) >= 0 || p.id.indexOf(qd) >= 0));
+    const key = k => tab + ':' + k;
+    const sel = k => s.f[key(k)] || [];
+    const ok = (p, skip, f) => facets.every(F => {
+      if (F.k === skip) return true;
+      const v = f[key(F.k)] || [];
+      return !v.length || v.indexOf(String(p[F.k])) >= 0;
+    });
+    const laske = f => all.filter(p => hakuOk(p) && ok(p, null, f)).length;
+    const tulos = all.filter(p => hakuOk(p) && ok(p, null, s.f));
+    const asetaF = (k, arr) => {
+      const nf = Object.assign({}, s.f);
+      if (arr.length) nf[key(k)] = arr; else delete nf[key(k)];
+      this.setState({ f: nf });
+    };
+    const lab = (F, o) => (F.lab && F.lab[o]) || (o + (F.suf || ''));
+
+    const fasetit = facets.map(F => ({
+      nimi: F.l,
+      opt: F.o.map(o => {
+        const n = all.filter(p => hakuOk(p) && ok(p, F.k, s.f) && String(p[F.k]) === o).length;
+        const on = sel(F.k).indexOf(o) >= 0;
+        return {
+          nimi: lab(F, o), maara: String(n), aria: n + ' ' + T.resultsLabel.toLowerCase(), valittu: on,
+          vari: n || on ? '#001e42' : '#44546a',
+          vaihda: () => { const cur = sel(F.k); asetaF(F.k, on ? cur.filter(x => x !== o) : cur.concat([o])); }
+        };
+      })
+    }));
+
+    const sirut = [];
+    facets.forEach(F => sel(F.k).forEach(o => {
+      const f2 = Object.assign({}, s.f); const rest = sel(F.k).filter(x => x !== o);
+      if (rest.length) f2[key(F.k)] = rest; else delete f2[key(F.k)];
+      sirut.push({ nimi: lab(F, o), aria: T.remove + ' ' + F.l + ' ' + lab(F, o), n: laske(f2), poista: () => asetaF(F.k, rest) });
+    }));
+    let ehdotus = null;
+    if (!tulos.length && sirut.length) {
+      const best = sirut.slice().sort((a, b) => b.n - a.n)[0];
+      if (best.n > 0) ehdotus = { nimi: T.emptySug(best.nimi, best.n), tee: best.poista };
+    }
+
+    const tulokset = tulos.map(p => {
+      const kaivo = p.t === 'kaivo';
+      return {
+        n: p.n, img: p.img, link: p.link || '#', tun: p.tun, tunL: T.tunL,
+        rivi: kaivo ? T.rivi(p.h, p.v) : '', onRivi: kaivo,
+        huom: p.huom || '', onHuom: !!p.huom
+      };
+    });
+
+    let otsikko = T.count(tulos.length, T.unit[tab]);
+
+    return {
+      t: T,
+      maat: [{ k: 'fi', nimi: 'Suomi' }, { k: 'se', nimi: 'Sverige' }].map(m => ({
+        nimi: m.nimi, valittu: maa === m.k, bg: maa === m.k ? '#0f2d57' : 'transparent',
+        viiva: maa === m.k ? 'inset 0 -3px 0 #c7ab86' : 'none', valitse: () => this.vaihdaMaa(m.k)
+      })),
+      nav: T.nav.map((n, i) => ({ nimi: n, nyt: i === 0 ? 'page' : 'false', viiva: i === 0 ? 'inset 0 -3px 0 #993300' : 'none' })),
+      lead: T.lead(nKaivo, nKansi),
+      q: s.q, hae: e => this.setState({ q: e && e.target ? e.target.value : '' }),
+      tabit: [['kaivo', T.tabKaivo, nKaivo], ['kansi', T.tabKansi, nKansi]].map(x => ({
+        nimi: x[1], maara: String(x[2]), valittu: tab === x[0],
+        vari: tab === x[0] ? '#001e42' : '#44546a', viiva: tab === x[0] ? 'inset 0 -3px 0 #993300' : 'none',
+        valitse: () => this.setState({ tab: x[0] })
+      })),
+      fasetit: fasetit, onRajauksia: sirut.length > 0, tyhjenna: () => this.setState({ f: {}, q: '' }),
+      sirut: sirut, onSiruja: sirut.length > 0,
+      sopivuus: tab === 'kaivo' ? { t: T.fitKaivo(nKansi), nappi: T.showKansi, tee: () => this.setState({ tab: 'kansi' }) } : { t: T.fitKansi(nKaivo), nappi: T.showKaivo, tee: () => this.setState({ tab: 'kaivo' }) },
+      tulosOtsikko: otsikko, eiTuloksia: tulos.length === 0, tyhjaTeksti: T.emptyTxt,
+      onEhdotus: !!ehdotus, ehdotus: ehdotus || { nimi: '', tee: null },
+      tulokset: tulokset
+    };
+  }
+}
+</script>
+</body>
+</html>

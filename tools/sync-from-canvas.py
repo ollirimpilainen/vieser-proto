@@ -4,7 +4,7 @@ import os, re, sys, json
 src, blobs = sys.argv[1], sys.argv[2]
 dst = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 kuvat = json.load(open(os.path.join(dst, 'tools', 'kuvat.json')))
-files = [f for f in os.listdir(src) if f.endswith('.dc.html')] + ['vieser.css']
+files = [f for f in os.listdir(src) if f.endswith('.dc.html') or f.endswith('.css')]
 for f in files:
     t = open(os.path.join(src, f)).read()
     for i in set(re.findall(r'/_blob/([0-9a-f]{32})', t)):
