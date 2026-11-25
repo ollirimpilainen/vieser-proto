@@ -186,25 +186,31 @@ body{margin:0}
     </section>
 
     <section style="background: #ece6da; color: #001e42; border-top: 1px solid #dac8ae">
-      <div style="max-width: 1360px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 7vw, 104px) clamp(20px, 3vw, 40px); display: flex; flex-direction: column; gap: 32px">
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+      <div class="vs-fit-wrap" style="max-width: 1360px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 7vw, 104px) clamp(20px, 3vw, 40px)">
+        <div style="display: flex; flex-direction: column; gap: 16px">
           <h2 style="margin: 0; font-size: clamp(34px, 3.6vw, 56px); line-height: .98; font-weight: 800; letter-spacing: -.03em">Sopii yhteen</h2>
-          <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #44546a; max-width: 30em">Korota kaivoa korokerenkaalla. Korkeammalle valutukipakkauksella, 345 mm asti.</p>
+          <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #44546a; max-width: 22em">Korota kaivoa korokerenkaalla. Korkeammalle valutukipakkauksella, 345 mm asti.</p>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 24px">
-          <a href="#" class="vs-lift" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: #001e42">
-            <div class="vs-acc pk" style=" aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center"><img class="vs-prod" src="img/7634616fbb291ec3b3b48174bd25c385.jpg" alt="" style="width: 70%; height: 80%; object-fit: contain"></div>
-            <div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 20px; font-weight: 800">Korokerengas 25-88 mm</span><span style="font-size: 15px; color: #44546a">Säädettävä korotus lattiarakenteen mukaan</span></div>
-          </a>
-          <a href="#" class="vs-lift" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: #001e42">
-            <div class="vs-acc pk" style=" aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center"><img class="vs-prod" src="img/92ac4e2bd8368510fc03254cf6c001dc.jpg" alt="" style="width: 70%; height: 80%; object-fit: contain"></div>
-            <div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 20px; font-weight: 800">Valutukipakkaus</span><span style="font-size: 15px; color: #44546a">Korotus 345 mm asti · LVI 3315948</span></div>
-          </a>
-          <a href="#" class="vs-lift" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: #001e42">
-            <div class="vs-acc pk" style=" aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center"><img class="vs-prod" src="img/7d87ad600d6baa3867ab3a54bc1c2a9f.jpg" alt="" style="width: 70%; height: 80%; object-fit: contain"></div>
-            <div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 20px; font-weight: 800">Vedeneristyslaippa</span><span style="font-size: 15px; color: #44546a">Vedeneristyksen liitos kaivoon</span></div>
-          </a>
-        </div>
+        <ul class="vs-fit" aria-label="Lisävarusteet">
+            <li><a href="#" class="vs-fit-row">
+              <span class="vs-fit-img"><img class="vs-prod" src="img/e3cfe13f37561530a2d1ddcacb7df096.jpg" alt=""></span>
+              <span class="vs-fit-txt"><strong>Korokerengas</strong><span>Säädettävä korotus lattiarakenteen mukaan</span></span>
+              <span class="vs-fit-num">25-88 mm<small>korotus</small></span>
+              <svg class="vs-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" stroke="#001e42" stroke-width="2.2"/></svg>
+            </a></li>
+            <li><a href="#" class="vs-fit-row">
+              <span class="vs-fit-img"><img class="vs-prod" src="img/7749c132fa7235c4308575dfd7fa585f.jpg" alt=""></span>
+              <span class="vs-fit-txt"><strong>Valutukipakkaus</strong><span>Kaivon tuki valun ajaksi, LVI&nbsp;3315948</span></span>
+              <span class="vs-fit-num">345 mm<small>korotus enintään</small></span>
+              <svg class="vs-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" stroke="#001e42" stroke-width="2.2"/></svg>
+            </a></li>
+            <li><a href="#" class="vs-fit-row">
+              <span class="vs-fit-img"><img class="vs-prod" src="img/8b1cd2c0d57f5a6f5e4e35105d01b871.jpg" alt=""></span>
+              <span class="vs-fit-txt"><strong>Vedeneristyslaippa</strong><span>Vedeneristyksen liitos kaivoon</span></span>
+              <span class="vs-fit-num"></span>
+              <svg class="vs-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" stroke="#001e42" stroke-width="2.2"/></svg>
+            </a></li>
+        </ul>
       </div>
     </section>
   </main>
@@ -221,7 +227,7 @@ body{margin:0}
   </footer>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4652}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4645}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
