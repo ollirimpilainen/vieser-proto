@@ -93,3 +93,5 @@ a{color:#001e42}
 .vs-play{box-shadow:0 6px 24px rgba(0,30,66,.28)}
 .vs-play:hover{transform:scale(1.06)}
 .vs-play:focus-visible{outline:none;box-shadow:0 0 0 3px #001e42,0 0 0 6px #f6f5ed}
+/* Tyylilaatta: akseli päättyy kaivon pohjaan, ettei se osu lähdön nimeen. */
+@media (min-width:761px){.lt-draw.lt-axcut::before{bottom:10%}}
