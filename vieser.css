@@ -89,3 +89,7 @@ a{color:#001e42}
   .vs-fit-num>small{margin-top:0;order:-1;font-size:14px}
   .vs-fit-row>.vs-arrow{grid-column:3;grid-row:1 / 3}
 }
+/* Video: tavallinen soitin, julisteena Vieserin oma kuva. */
+.vs-play{box-shadow:0 6px 24px rgba(0,30,66,.28)}
+.vs-play:hover{transform:scale(1.06)}
+.vs-play:focus-visible{outline:none;box-shadow:0 0 0 3px #001e42,0 0 0 6px #f6f5ed}
