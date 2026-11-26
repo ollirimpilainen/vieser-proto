@@ -97,6 +97,7 @@ body{margin:0}
             </div>
           </sc-if>
           <p style="margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0 12px; font-size: 15px; line-height: 1.5; color: #44546a"><span>{{ sopivuus.t }}</span><button type="button" class="vs-tap th-fit" onClick="{{ sopivuus.tee }}">{{ sopivuus.nappi }}</button></p>
+          <div class="th-head" aria-hidden="true"><span></span><span></span><span class="th-nums"><sc-for list="{{ sarakkeet }}" as="h" hint-placeholder-count="2"><span class="th-num th-numh">{{ h }}</span></sc-for></span><span></span></div>
         </div>
 
         <sc-if value="{{ eiTuloksia }}" hint-placeholder-val="{{ false }}">
@@ -117,10 +118,10 @@ body{margin:0}
                 <span class="th-img pk"><img class="vs-prod" src="{{ p.img }}" alt=""></span>
                 <span style="min-width: 0; display: flex; flex-direction: column; gap: 6px">
                   <h3 style="margin: 0; font-size: 20px; line-height: 1.25; font-weight: 800; letter-spacing: -.01em"><span class="th-name">{{ p.n }}</span></h3>
-                  <sc-if value="{{ p.onRivi }}" hint-placeholder-val="{{ true }}"><span style="font-size: 15px; line-height: 1.5; color: #44546a">{{ p.rivi }}</span></sc-if>
                   <sc-if value="{{ p.onHuom }}" hint-placeholder-val="{{ false }}"><span style="font-size: 15px; line-height: 1.5; font-weight: 700">{{ p.huom }}</span></sc-if>
                   <span class="th-tun"><span style="color: #44546a">{{ p.tunL }}</span> {{ p.tun }}</span>
                 </span>
+                <span class="th-nums"><sc-for list="{{ p.luvut }}" as="u" hint-placeholder-count="2"><span class="th-num"><span class="th-numv">{{ u.v }}</span><span class="th-numl">{{ u.l }}</span></span></sc-for></span>
                 <span class="th-go">{{ t.toProduct }}<svg class="vs-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
               </a>
             </li>
@@ -141,7 +142,7 @@ body{margin:0}
   </footer>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"maa":{"editor":"enum","options":["fi","se"],"default":"fi"},"$preview":{"width":1440,"height":2780}}'>
+<script type="text/x-dc" data-dc-script data-props='{"maa":{"editor":"enum","options":["fi","se"],"default":"fi"},"$preview":{"width":1440,"height":2790}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
@@ -162,7 +163,7 @@ class Component extends DCLogic {
       unit: { kaivo: ['golvbrunn', 'golvbrunnar'], kansi: ['galler', 'galler'] },
       filtersLabel: 'Filter', filters: 'Filtrera', clear: 'Rensa filter', clearShort: 'Rensa', activeLabel: 'Valda filter', remove: 'Ta bort filter',
       resultsLabel: 'Produkter', tunL: 'RSK', toProduct: 'Till produkten',
-      rivi: function (h, v) { return 'Bygghöjd ' + h + ' mm, flöde ' + v + ' l/s'; },
+      cols: { kaivo: [['Bygghöjd', 'bygghöjd mm'], ['Flöde', 'flöde l/s']], kansi: [['Storlek', 'storlek mm']] },
       fitKaivo: function (n) { return 'Alla ' + n + ' galler passar alla Vieser golvbrunnar.'; }, fitKansi: function (n) { return 'Alla galler passar alla ' + n + ' golvbrunnar.'; }, showKansi: 'Visa galler', showKaivo: 'Visa golvbrunnar',
       emptyH: 'Inga produkter med de här filtren', emptyTxt: 'Ta bort ett filter eller rensa alla.', emptySug: function (v, n) { return 'Ta bort ' + v + ' (visa ' + n + ')'; },
       lead: function (a, b) { return a + ' golvbrunnar och ' + b + ' galler. Filtrera på tekniska data och se direkt vilka galler som passar.'; },
@@ -194,7 +195,7 @@ class Component extends DCLogic {
       unit: { kaivo: ['kaivo', 'kaivoa'], kansi: ['kansi', 'kantta'] },
       filtersLabel: 'Suodattimet', filters: 'Suodata', clear: 'Tyhjennä suodattimet', clearShort: 'Tyhjennä', activeLabel: 'Valitut rajaukset', remove: 'Poista rajaus',
       resultsLabel: 'Tuotteet', tunL: 'LVI', toProduct: 'Tuotesivulle',
-      rivi: function (h, v) { return 'Korkeus ' + h + ' mm, virtaama ' + v + ' l/s'; },
+      cols: { kaivo: [['Rakennekorkeus', 'rakennekorkeus mm'], ['Virtaama', 'virtaama l/s']], kansi: [['Koko', 'koko mm']] },
       fitKaivo: function (n) { return 'Kaikki ' + n + ' kantta sopivat kaikkiin Vieser-kaivoihin.'; }, fitKansi: function (n) { return 'Kaikki kannet sopivat kaikkiin ' + n + ' kaivoon.'; }, showKansi: 'Näytä kannet', showKaivo: 'Näytä kaivot',
       emptyH: 'Näillä rajauksilla ei löydy tuotteita', emptyTxt: 'Poista jokin rajaus tai tyhjennä kaikki.', emptySug: function (v, n) { return 'Poista ' + v + ' (näytä ' + n + ')'; },
       lead: function (a, b) { return a + ' kaivoa ja ' + b + ' kantta. Rajaa teknisten tietojen mukaan ja näe heti, mitkä kannet sopivat.'; },
@@ -280,7 +281,7 @@ class Component extends DCLogic {
       const kaivo = p.t === 'kaivo';
       return {
         n: p.n, img: p.img, link: p.link || '#', tun: p.tun, tunL: T.tunL,
-        rivi: kaivo ? T.rivi(p.h, p.v) : '', onRivi: kaivo,
+        luvut: (kaivo ? [String(p.h), p.v] : [p.koko]).map((v, i) => ({ v: v, l: T.cols[p.t][i][1] })),
         huom: p.huom || '', onHuom: !!p.huom
       };
     });
@@ -306,7 +307,7 @@ class Component extends DCLogic {
       sopivuus: tab === 'kaivo' ? { t: T.fitKaivo(nKansi), nappi: T.showKansi, tee: () => this.setState({ tab: 'kansi' }) } : { t: T.fitKansi(nKaivo), nappi: T.showKaivo, tee: () => this.setState({ tab: 'kaivo' }) },
       tulosOtsikko: otsikko, eiTuloksia: tulos.length === 0, tyhjaTeksti: T.emptyTxt,
       onEhdotus: !!ehdotus, ehdotus: ehdotus || { nimi: '', tee: null },
-      tulokset: tulokset
+      tulokset: tulokset, sarakkeet: T.cols[tab].map(c => c[0])
     };
   }
 }
